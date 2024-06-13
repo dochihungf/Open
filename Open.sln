@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{03CAAA20-DC24-40B7-B13F-D033DA56A627}"
+	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
+		.gitignore = .gitignore
+		docker-compose.override.yml = docker-compose.override.yml
+		docker-compose.yml = docker-compose.yml
+		Dockerfile = Dockerfile
+		global.json = global.json
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{AFA8521D-575E-4833-A4A0-18D4C588A026}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{22861D4C-BECE-43BF-B0BD-C236C51D54EE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{BBA4EAF7-2C72-4147-AAC1-BE27BB4E7B0C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{880DA238-F938-4FA1-85CA-699650793B15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Open.Core.Caching", "Src\BuildingBlocks\Open.Core.Caching\Open.Core.Caching.csproj", "{9FF17DA0-09EC-4331-A438-030562C97FCE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BBA4EAF7-2C72-4147-AAC1-BE27BB4E7B0C} = {AFA8521D-575E-4833-A4A0-18D4C588A026}
+		{880DA238-F938-4FA1-85CA-699650793B15} = {AFA8521D-575E-4833-A4A0-18D4C588A026}
+		{9FF17DA0-09EC-4331-A438-030562C97FCE} = {BBA4EAF7-2C72-4147-AAC1-BE27BB4E7B0C}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9FF17DA0-09EC-4331-A438-030562C97FCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FF17DA0-09EC-4331-A438-030562C97FCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FF17DA0-09EC-4331-A438-030562C97FCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FF17DA0-09EC-4331-A438-030562C97FCE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
