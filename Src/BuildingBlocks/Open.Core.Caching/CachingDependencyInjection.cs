@@ -1,17 +1,17 @@
-﻿
-using Microsoft.Extensions.Caching.Memory;
+﻿using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Open.Core.Caching.Distributed;
+using Open.Core.Caching.Extensions;
 using Open.Core.Caching.InMemory;
 using Open.Core.Caching.Sequence;
 using Open.Core.Caching.Settings;
 using StackExchange.Redis;
 
-namespace Open.Core.Caching.Extensions;
+namespace Open.Core.Caching;
 
-public static class CachingDependencyInjectionExtensions
+public static class CachingDependencyInjection
 {
     public static IServiceCollection AddInMemoryCaching(this IServiceCollection services, IConfiguration configuration)
     {
