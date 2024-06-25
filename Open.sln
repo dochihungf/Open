@@ -25,6 +25,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Open.Core.Exception", "Src\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Open.Core.Mailing", "Src\BuildingBlocks\Open.Core.Mailing\Open.Core.Mailing.csproj", "{3F71EC6B-0A0B-4B3D-90C8-3919359A3A0D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Open.MessageBroker.IntegrationEventLogs", "Src\BuildingBlocks\Open.MessageBroker.IntegrationEventLogs\Open.MessageBroker.IntegrationEventLogs.csproj", "{B1DF6BDA-CC6D-4772-8BAF-C4DC8A36CD4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Open.MessageBroker.Abstractions", "Src\BuildingBlocks\Open.MessageBroker.Abstractions\Open.MessageBroker.Abstractions.csproj", "{B71D3ACB-65C6-4FA7-9AD4-B54816041ECB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Open.MessageBroker.RabbitMQ", "Src\BuildingBlocks\Open.MessageBroker.RabbitMQ\Open.MessageBroker.RabbitMQ.csproj", "{3949AAEA-684D-42F4-8C01-41D95F6B6479}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Open.MessageBroker.MassTransit.RabbitMQ", "Src\BuildingBlocks\Open.MessageBroker.MassTransit.RabbitMQ\Open.MessageBroker.MassTransit.RabbitMQ.csproj", "{1009ABFF-24E5-4732-8451-E4867F36ADA0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +44,10 @@ Global
 		{9FF17DA0-09EC-4331-A438-030562C97FCE} = {BBA4EAF7-2C72-4147-AAC1-BE27BB4E7B0C}
 		{0FB1397F-A071-4792-8079-4F4E48D95E5E} = {BBA4EAF7-2C72-4147-AAC1-BE27BB4E7B0C}
 		{3F71EC6B-0A0B-4B3D-90C8-3919359A3A0D} = {BBA4EAF7-2C72-4147-AAC1-BE27BB4E7B0C}
+		{B1DF6BDA-CC6D-4772-8BAF-C4DC8A36CD4C} = {BBA4EAF7-2C72-4147-AAC1-BE27BB4E7B0C}
+		{B71D3ACB-65C6-4FA7-9AD4-B54816041ECB} = {BBA4EAF7-2C72-4147-AAC1-BE27BB4E7B0C}
+		{3949AAEA-684D-42F4-8C01-41D95F6B6479} = {BBA4EAF7-2C72-4147-AAC1-BE27BB4E7B0C}
+		{1009ABFF-24E5-4732-8451-E4867F36ADA0} = {BBA4EAF7-2C72-4147-AAC1-BE27BB4E7B0C}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{9FF17DA0-09EC-4331-A438-030562C97FCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -50,5 +62,21 @@ Global
 		{3F71EC6B-0A0B-4B3D-90C8-3919359A3A0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F71EC6B-0A0B-4B3D-90C8-3919359A3A0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F71EC6B-0A0B-4B3D-90C8-3919359A3A0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1DF6BDA-CC6D-4772-8BAF-C4DC8A36CD4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1DF6BDA-CC6D-4772-8BAF-C4DC8A36CD4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1DF6BDA-CC6D-4772-8BAF-C4DC8A36CD4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1DF6BDA-CC6D-4772-8BAF-C4DC8A36CD4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B71D3ACB-65C6-4FA7-9AD4-B54816041ECB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B71D3ACB-65C6-4FA7-9AD4-B54816041ECB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B71D3ACB-65C6-4FA7-9AD4-B54816041ECB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B71D3ACB-65C6-4FA7-9AD4-B54816041ECB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3949AAEA-684D-42F4-8C01-41D95F6B6479}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3949AAEA-684D-42F4-8C01-41D95F6B6479}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3949AAEA-684D-42F4-8C01-41D95F6B6479}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3949AAEA-684D-42F4-8C01-41D95F6B6479}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1009ABFF-24E5-4732-8451-E4867F36ADA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1009ABFF-24E5-4732-8451-E4867F36ADA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1009ABFF-24E5-4732-8451-E4867F36ADA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1009ABFF-24E5-4732-8451-E4867F36ADA0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
