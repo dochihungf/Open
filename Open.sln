@@ -33,6 +33,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Open.MessageBroker.RabbitMQ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Open.MessageBroker.MassTransit.RabbitMQ", "Src\BuildingBlocks\Open.MessageBroker.MassTransit.RabbitMQ\Open.MessageBroker.MassTransit.RabbitMQ.csproj", "{1009ABFF-24E5-4732-8451-E4867F36ADA0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{1E531527-00AB-427F-8C77-22E04499D797}"
+	ProjectSection(SolutionItems) = preProject
+		Resources\Tai-lieu.xlsx = Resources\Tai-lieu.xlsx
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Console", "Console", "{7DC730CB-74C4-435C-B7FD-61FDFCE4A9BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "Src\Console\ConsoleApp\ConsoleApp.csproj", "{F1DAAED8-D328-4B7A-8814-DC968E78F371}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,6 +57,8 @@ Global
 		{B71D3ACB-65C6-4FA7-9AD4-B54816041ECB} = {BBA4EAF7-2C72-4147-AAC1-BE27BB4E7B0C}
 		{3949AAEA-684D-42F4-8C01-41D95F6B6479} = {BBA4EAF7-2C72-4147-AAC1-BE27BB4E7B0C}
 		{1009ABFF-24E5-4732-8451-E4867F36ADA0} = {BBA4EAF7-2C72-4147-AAC1-BE27BB4E7B0C}
+		{7DC730CB-74C4-435C-B7FD-61FDFCE4A9BF} = {880DA238-F938-4FA1-85CA-699650793B15}
+		{F1DAAED8-D328-4B7A-8814-DC968E78F371} = {7DC730CB-74C4-435C-B7FD-61FDFCE4A9BF}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{9FF17DA0-09EC-4331-A438-030562C97FCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -78,5 +89,9 @@ Global
 		{1009ABFF-24E5-4732-8451-E4867F36ADA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1009ABFF-24E5-4732-8451-E4867F36ADA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1009ABFF-24E5-4732-8451-E4867F36ADA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1DAAED8-D328-4B7A-8814-DC968E78F371}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1DAAED8-D328-4B7A-8814-DC968E78F371}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1DAAED8-D328-4B7A-8814-DC968E78F371}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1DAAED8-D328-4B7A-8814-DC968E78F371}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

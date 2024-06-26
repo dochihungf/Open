@@ -6,4 +6,16 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Open.MessageBroker.Abstractions\Open.MessageBroker.Abstractions.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+        <!-- RabbitMQ-->
+        <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.0" />
+        <PackageReference Include="Aspire.RabbitMQ.Client" Version="8.0.0-preview.6.24214.1" />
+        <PackageReference Include="OpenTelemetry.Api" Version="1.8.1" />
+        <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0"/>
+        <PackageReference Include="Polly.Core" Version="8.3.1"/>
+    </ItemGroup>
+
 </Project>
