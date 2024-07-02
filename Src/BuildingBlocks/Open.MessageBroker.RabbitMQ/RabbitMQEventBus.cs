@@ -1,5 +1,7 @@
 using System.Net.Sockets;
+using System.Text;
 using System.Text.Json;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -9,6 +11,7 @@ using Open.MessageBroker.RabbitMQ.Settings;
 using Polly;
 using Polly.Retry;
 using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
 using RabbitMQ.Client.Exceptions;
 
 namespace Open.MessageBroker.RabbitMQ;
@@ -38,21 +41,152 @@ public class RabbitMqEventBus : IEventBus, IDisposable, IHostedService
         _subscriptionInfo = subscriptionOptions.Value;
     }
     
+    // Publisher Integration Event
     public Task PublishAsync(IntegrationEvent @event, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        var routingKey = @event.GetType().Name;
+
+        using var channel = _rabbitMqConnection.CreateModel() ?? throw new InvalidOperationException("RabbitMQ connection is not open ...");
+        channel.ExchangeDeclare(exchange: ExchangeName, type: ExchangeType.Direct);
+        var body = SerializeMessage(@event);
+
+        Task Callback()
+        {
+            var properties = channel.CreateBasicProperties();
+            properties.DeliveryMode = 2;
+
+            try
+            {
+                channel.BasicPublish(exchange: ExchangeName, 
+                    routingKey: routingKey, 
+                    mandatory: true,
+                    basicProperties: properties, 
+                    body: body);
+                return Task.CompletedTask;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw;
+            }
+        }
+
+        return _pipeline.Execute(Callback);
+
     }
 
+    // Start Hosted Service
     public Task StartAsync(CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        // Messaging is async so we don't need to wait for it to complete. On top of this
+        // the APIs are blocking, so we need to run this on a background thread.
+        _ = Task.Factory.StartNew(() =>
+        {
+            try
+            {
+                _logger.LogInformation("Starting RabbitMQ connection on a background thread");
+                
+                _rabbitMqConnection = _provider.GetRequiredService<IConnection>();
+                if (!_rabbitMqConnection.IsOpen)
+                {
+                    return;
+                }
+        
+                _consumerChannel = _rabbitMqConnection.CreateModel();
+        
+                _consumerChannel.CallbackException += (sender, ea) =>
+                {
+                    _logger.LogWarning(ea.Exception, "Error with RabbitMQ consumer channel");
+                };
+        
+                _consumerChannel.ExchangeDeclare(exchange: ExchangeName, type: "direct");
+
+                _consumerChannel.QueueDeclare(queue: _queueName,
+                    durable: true,
+                    exclusive: false,
+                    autoDelete: false,
+                    arguments: null);
+        
+                var consumer = new AsyncEventingBasicConsumer(_consumerChannel);
+        
+                consumer.Received += OnMessageReceivedAsync;
+        
+                _consumerChannel.BasicConsume(
+                    queue: _queueName,
+                    autoAck: false,
+                    consumer: consumer);
+                
+                foreach (var (eventName, _) in _subscriptionInfo.EventTypes)
+                {
+                    _consumerChannel.QueueBind(
+                        queue: _queueName,
+                        exchange: ExchangeName,
+                        routingKey: eventName);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error starting RabbitMQ connection");
+            }
+        }, TaskCreationOptions.LongRunning);
+        
+        return Task.CompletedTask;
     }
 
+    // Stop Hosted Service
     public Task StopAsync(CancellationToken cancellationToken = default)
     {
         return Task.CompletedTask;
     }
 
+    private async Task OnMessageReceivedAsync(object sender, BasicDeliverEventArgs eventArgs)
+    {
+        var eventName = eventArgs.RoutingKey;
+        var message = Encoding.UTF8.GetString(eventArgs.Body.Span);
+        
+        try
+        {
+            await ProcessEventAsync(eventName, message);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogWarning(ex, "Error Processing message \"{Message}\"", message);
+        }
+        
+        // Even on exception we take the message off the queue.
+        // in a REAL WORLD app this should be handled with a Dead Letter Exchange (DLX). 
+        // For more information see: https://www.rabbitmq.com/dlx.html
+        _consumerChannel.BasicAck(eventArgs.DeliveryTag, multiple: false);
+    }
+    
+    private async Task ProcessEventAsync(string eventName, string message, CancellationToken cancellationToken = default)
+    {
+        await using var scope = _provider.CreateAsyncScope();
+        
+        if (!_subscriptionInfo.EventTypes.TryGetValue(eventName, out var eventType))
+        {
+            _logger.LogWarning("Unable to resolve event type for event name {EventName}", eventName);
+            return;
+        }
+        
+        // Deserialize the event
+        var integrationEvent = DeserializeMessage(message, eventType);
+        if(integrationEvent == null) return;
+
+        // Get all the handlers using the event type as the key
+        var handlers = scope.ServiceProvider.GetKeyedServices<IIntegrationEventHandler>(eventType);
+        
+        // foreach (var handler in handlers)
+        // {
+        //     await handler.HandleAsync(integrationEvent, cancellationToken);
+        // }
+        
+        // REVIEW: This could be done in parallel
+        var handlerTasks = handlers.Select(handler => handler.HandleAsync(integrationEvent, cancellationToken));
+
+        // Await all handler tasks to complete
+        await Task.WhenAll(handlerTasks);
+    }
     
     #region Deserialize and Serialize
     private IntegrationEvent? DeserializeMessage(string message, Type eventType)
