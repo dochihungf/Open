@@ -7,9 +7,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Abstractions\" />
-      <Folder Include="Events\" />
-      <Folder Include="Extensions\" />
+      <ProjectReference Include="..\Open.MessageBroker.Abstractions\Open.MessageBroker.Abstractions.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.2" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="8.0.2" />
+        <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.0" />
     </ItemGroup>
 
 </Project>
