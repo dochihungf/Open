@@ -1,4 +1,4 @@
-﻿namespace Open.MessageBroker.RabbitMQ;
+﻿namespace Open.MessageBroker.RabbitMQ.Types;
 
 public static class ExchangeType
 {

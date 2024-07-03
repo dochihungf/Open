@@ -14,7 +14,7 @@ using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using RabbitMQ.Client.Exceptions;
 
-namespace Open.MessageBroker.RabbitMQ;
+namespace Open.MessageBroker.RabbitMQ.EventBus;
 
 public class RabbitMqEventBus : IEventBus, IDisposable, IHostedService
 {
@@ -47,7 +47,7 @@ public class RabbitMqEventBus : IEventBus, IDisposable, IHostedService
         var routingKey = @event.GetType().Name;
 
         using var channel = _rabbitMqConnection.CreateModel() ?? throw new InvalidOperationException("RabbitMQ connection is not open ...");
-        channel.ExchangeDeclare(exchange: ExchangeName, type: ExchangeType.Direct);
+        channel.ExchangeDeclare(exchange: ExchangeName, type: global::RabbitMQ.Client.ExchangeType.Direct);
         var body = SerializeMessage(@event);
 
         Task Callback()
@@ -86,36 +86,45 @@ public class RabbitMqEventBus : IEventBus, IDisposable, IHostedService
             {
                 _logger.LogInformation("Starting RabbitMQ connection on a background thread");
                 
+                // Lấy kết nối RabbitMQ từ Service Provider
                 _rabbitMqConnection = _provider.GetRequiredService<IConnection>();
                 if (!_rabbitMqConnection.IsOpen)
                 {
                     return;
                 }
         
+                // Tạo channel để tiêu thụ các message 
                 _consumerChannel = _rabbitMqConnection.CreateModel();
         
+                // Xử lý call-back exception cho channel
                 _consumerChannel.CallbackException += (sender, ea) =>
                 {
                     _logger.LogWarning(ea.Exception, "Error with RabbitMQ consumer channel");
                 };
         
-                _consumerChannel.ExchangeDeclare(exchange: ExchangeName, type: "direct");
+                // Khai báo exchange với loại Direct
+                _consumerChannel.ExchangeDeclare(exchange: ExchangeName, type: global::RabbitMQ.Client.ExchangeType.Direct);
 
+                // Khai báo queue
                 _consumerChannel.QueueDeclare(queue: _queueName,
                     durable: true,
                     exclusive: false,
                     autoDelete: false,
                     arguments: null);
         
+                // Tạo consumer để xử lý các message
                 var consumer = new AsyncEventingBasicConsumer(_consumerChannel);
         
+                // Gán sự kiện khi nhận được các message
                 consumer.Received += OnMessageReceivedAsync;
         
+                // Bắt đầu tiêu thụ các message từ queue
                 _consumerChannel.BasicConsume(
                     queue: _queueName,
                     autoAck: false,
                     consumer: consumer);
                 
+                // Ràng buộc hàng đợi với các exchange dựa trên loại sự kiện
                 foreach (var (eventName, _) in _subscriptionInfo.EventTypes)
                 {
                     _consumerChannel.QueueBind(

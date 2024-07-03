@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Open.MessageBroker.Abstractions.Abstractions;
+using Open.MessageBroker.RabbitMQ.EventBus;
 using Polly;
 using Polly.Retry;
 using RabbitMQ.Client;
