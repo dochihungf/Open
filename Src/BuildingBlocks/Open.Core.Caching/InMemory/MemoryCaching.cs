@@ -100,7 +100,7 @@ public class MemoryCaching(IMemoryCache caching) : IMemoryCaching
         return JsonConvert.DeserializeObject<T>(resultRaw);
     }
 
-    public async Task<string> GetStringAsync(string key)
+    public async Task<string?> GetStringAsync(string key)
     {
         if (key == null)
         {

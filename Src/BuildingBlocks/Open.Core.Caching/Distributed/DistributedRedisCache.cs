@@ -118,7 +118,7 @@ public class DistributedRedisCache : IDistributedRedisCache
         });
     }
 
-    public async Task<string> GetStringAsync(string key)
+    public async Task<string?> GetStringAsync(string key)
     {
         if (string.IsNullOrWhiteSpace(key))
         {

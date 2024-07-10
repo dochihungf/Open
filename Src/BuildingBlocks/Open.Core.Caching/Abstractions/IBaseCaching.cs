@@ -16,7 +16,7 @@ public interface IBaseCaching
     
     Task<T?> GetAsync<T>(string key);
     
-    Task<string> GetStringAsync(string key);
+    Task<string?> GetStringAsync(string key);
     
     Task<bool> ReplaceAsync(string key, object value);
 }

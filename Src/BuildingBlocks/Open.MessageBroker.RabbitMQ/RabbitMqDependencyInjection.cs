@@ -44,6 +44,7 @@ public static class RabbitMqDependencyInjection
 
         // Abstractions on top of the core client API
         services.AddSingleton<IEventBus, RabbitMqEventBus>();
+        
         // Start consuming messages as soon as the application starts
         services.AddSingleton<IHostedService>(sp => (RabbitMqEventBus)sp.GetRequiredService<IEventBus>());
 
