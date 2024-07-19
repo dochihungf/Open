@@ -1,7 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using Open.UnitTesting.Basics.Units;
+using ConsoleApp.Units;
 using AlgorithmPropertyHash = ConsoleApp.Units.AlgorithmPropertyHash;
+using PropertyHash = ConsoleApp.Units.PropertyHash;
 
 var hasher = new PropertyHash();
 var hasherAlgorithm = new AlgorithmPropertyHash("SHA256");

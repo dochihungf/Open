@@ -7,8 +7,4 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\Basics\Open.UnitTesting.Basics\Open.UnitTesting.Basics.csproj" />
-    </ItemGroup>
-
 </Project>
