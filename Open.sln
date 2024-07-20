@@ -57,6 +57,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mocking", "Mocking", "{C70F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Open.UnitTesting.Mocking", "UnitTesting\Open.UnitTesting.Mocking\Open.UnitTesting.Mocking.csproj", "{00A3D2FD-9A6F-4A50-A4B2-E98F10E3BDD9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{0BBC3219-F82A-4DA3-8920-5EEDEFA36A19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Open.UnitTesting.Caching.Tests", "UnitTesting\Open.UnitTesting.Caching.Tests\Open.UnitTesting.Caching.Tests.csproj", "{0DEC8407-826A-40B7-AAE8-0AC6258A6AE1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +83,8 @@ Global
 		{21F861FE-5D54-4D22-A978-F46952ADE192} = {E832CEC3-A5B8-4F57-ABE9-3387B2782CE0}
 		{C70F51F6-6388-4CAB-ACDA-DC5086BD0A37} = {50E46F86-CF23-48F7-BC3C-6CE48641AF15}
 		{00A3D2FD-9A6F-4A50-A4B2-E98F10E3BDD9} = {C70F51F6-6388-4CAB-ACDA-DC5086BD0A37}
+		{0BBC3219-F82A-4DA3-8920-5EEDEFA36A19} = {50E46F86-CF23-48F7-BC3C-6CE48641AF15}
+		{0DEC8407-826A-40B7-AAE8-0AC6258A6AE1} = {0BBC3219-F82A-4DA3-8920-5EEDEFA36A19}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{9FF17DA0-09EC-4331-A438-030562C97FCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -125,5 +131,9 @@ Global
 		{00A3D2FD-9A6F-4A50-A4B2-E98F10E3BDD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00A3D2FD-9A6F-4A50-A4B2-E98F10E3BDD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00A3D2FD-9A6F-4A50-A4B2-E98F10E3BDD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DEC8407-826A-40B7-AAE8-0AC6258A6AE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DEC8407-826A-40B7-AAE8-0AC6258A6AE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DEC8407-826A-40B7-AAE8-0AC6258A6AE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DEC8407-826A-40B7-AAE8-0AC6258A6AE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
