@@ -11,10 +11,10 @@ public class DistributedRedisCache : IDistributedRedisCache
 {
     private readonly IDatabase _cache;
     private readonly string _instance;
-    private readonly AsyncRetryPolicy _retryPolicy;
+    private readonly AsyncRetryPolicy? _retryPolicy;
     private readonly IServer _server;
 
-    public DistributedRedisCache(IOptions<DistributedCacheSettings> options, AsyncRetryPolicy asyncRetryPolicy)
+    public DistributedRedisCache(IOptions<DistributedCacheSettings> options, AsyncRetryPolicy? asyncRetryPolicy)
     {
         var connection = ConnectionMultiplexer.Connect(options.Value.ConnectionString);
         _cache = connection.GetDatabase(options.Value.DatabaseIndex);
@@ -153,13 +153,22 @@ public class DistributedRedisCache : IDistributedRedisCache
     
     private async Task<T> RunWithPolicyAsync<T>(Func<Task<T>> action)
     {
+        if (_retryPolicy is null)
+            return await action();
+
         return await _retryPolicy
             .ExecuteAsync(async () => await action())
             .ConfigureAwait(false);
     }
-    
+
     private async Task RunWithPolicyAsync(Func<Task> action)
     {
+        if (_retryPolicy is null)
+        {
+            await action();
+            return;
+        }
+
         await _retryPolicy
             .ExecuteAsync(async () =>
             {

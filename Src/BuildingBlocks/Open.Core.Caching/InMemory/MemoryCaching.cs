@@ -47,16 +47,11 @@ public class MemoryCaching(IMemoryCache caching) : IMemoryCaching
         {
             throw new ArgumentNullException(nameof(value));
         }
-        
-        if (!expiry.HasValue)
-        {
-            caching.Set(key, value, DefaultAbsoluteExpireTime ?? TimeSpan.FromMinutes(5));
-        }
-        else
-        {
-            caching.Set(key, value, expiry.Value);
-        }
 
+        expiry = expiry ?? (DefaultAbsoluteExpireTime ?? TimeSpan.FromMinutes(5));
+        
+        caching.Set(key, value, expiry.Value);
+        
         return await ExistsAsync(key);
         
     }
