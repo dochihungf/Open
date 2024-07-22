@@ -102,7 +102,7 @@ public class MemoryCaching(IMemoryCache caching) : IMemoryCaching
 
     public async Task<string?> GetStringAsync(string key)
     {
-        if (key == null)
+        if (string.IsNullOrEmpty(key))
         {
             throw new ArgumentNullException(nameof(key));
         }
