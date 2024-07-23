@@ -42,7 +42,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Open.Security", "Src\Buildi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTesting", "UnitTesting", "{50E46F86-CF23-48F7-BC3C-6CE48641AF15}"
 	ProjectSection(SolutionItems) = preProject
-		README.md = README.md
+		UnitTesting\README.md = UnitTesting\README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Consoles", "Consoles", "{C0426EC6-3B29-4DB8-A4B1-A777DACBE51E}"
@@ -60,6 +60,16 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{0BBC3219-F82A-4DA3-8920-5EEDEFA36A19}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Open.UnitTesting.Caching.Tests", "UnitTesting\Open.UnitTesting.Caching.Tests\Open.UnitTesting.Caching.Tests.csproj", "{0DEC8407-826A-40B7-AAE8-0AC6258A6AE1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{ADC273AE-304A-4F60-A7AC-C075872483C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Open.Identity.Api", "Src\Services\Identity\Open.Identity.Api\Open.Identity.Api.csproj", "{AC13F536-2B21-4C6B-A769-9D0C99C31C21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Open.Identity.Infrastructure", "Src\Services\Identity\Open.Identity.Infrastructure\Open.Identity.Infrastructure.csproj", "{0F15982C-7CB5-46F3-B672-4ADA8716A03E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Open.Identity.Domain", "Src\Services\Identity\Open.Identity.Domain\Open.Identity.Domain.csproj", "{87721848-D351-4432-A67A-B1C8E69191B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Open.SharedKernel", "Src\BuildingBlocks\Open.SharedKernel\Open.SharedKernel.csproj", "{9D3FAA3F-0382-41F7-9D4D-96CDDA13A7BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -85,6 +95,11 @@ Global
 		{00A3D2FD-9A6F-4A50-A4B2-E98F10E3BDD9} = {C70F51F6-6388-4CAB-ACDA-DC5086BD0A37}
 		{0BBC3219-F82A-4DA3-8920-5EEDEFA36A19} = {50E46F86-CF23-48F7-BC3C-6CE48641AF15}
 		{0DEC8407-826A-40B7-AAE8-0AC6258A6AE1} = {0BBC3219-F82A-4DA3-8920-5EEDEFA36A19}
+		{ADC273AE-304A-4F60-A7AC-C075872483C3} = {880DA238-F938-4FA1-85CA-699650793B15}
+		{AC13F536-2B21-4C6B-A769-9D0C99C31C21} = {ADC273AE-304A-4F60-A7AC-C075872483C3}
+		{0F15982C-7CB5-46F3-B672-4ADA8716A03E} = {ADC273AE-304A-4F60-A7AC-C075872483C3}
+		{87721848-D351-4432-A67A-B1C8E69191B2} = {ADC273AE-304A-4F60-A7AC-C075872483C3}
+		{9D3FAA3F-0382-41F7-9D4D-96CDDA13A7BD} = {BBA4EAF7-2C72-4147-AAC1-BE27BB4E7B0C}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{9FF17DA0-09EC-4331-A438-030562C97FCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -135,5 +150,21 @@ Global
 		{0DEC8407-826A-40B7-AAE8-0AC6258A6AE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DEC8407-826A-40B7-AAE8-0AC6258A6AE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DEC8407-826A-40B7-AAE8-0AC6258A6AE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC13F536-2B21-4C6B-A769-9D0C99C31C21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC13F536-2B21-4C6B-A769-9D0C99C31C21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC13F536-2B21-4C6B-A769-9D0C99C31C21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC13F536-2B21-4C6B-A769-9D0C99C31C21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F15982C-7CB5-46F3-B672-4ADA8716A03E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F15982C-7CB5-46F3-B672-4ADA8716A03E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F15982C-7CB5-46F3-B672-4ADA8716A03E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F15982C-7CB5-46F3-B672-4ADA8716A03E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87721848-D351-4432-A67A-B1C8E69191B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87721848-D351-4432-A67A-B1C8E69191B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87721848-D351-4432-A67A-B1C8E69191B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87721848-D351-4432-A67A-B1C8E69191B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D3FAA3F-0382-41F7-9D4D-96CDDA13A7BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D3FAA3F-0382-41F7-9D4D-96CDDA13A7BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D3FAA3F-0382-41F7-9D4D-96CDDA13A7BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D3FAA3F-0382-41F7-9D4D-96CDDA13A7BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
