@@ -1,0 +1,31 @@
+version: '3.8'
+
+services: 
+  #identity database: postgres
+  identity-db:
+    container_name: open-identity-db
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=open_identity_db
+    restart: always
+    ports:
+      - "5433:5432"
+    volumes:
+      - identity_data:/var/lib/postgresql/data
+  
+  # drive database
+  
+  # gmail database
+  
+  #infrastructure section
+  pgadmin:
+    container_name: pgadmin
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=admin
+    restart: always
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin_data:/root/.pgadmin

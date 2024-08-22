@@ -1,0 +1,79 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{FC8EC7CB-1133-4EFC-8694-F1B33F362534}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{48B56451-07D9-48C8-AA1B-25B5120AB102}"
+	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		.gitleaks.toml = .gitleaks.toml
+		Directory.Build.props = Directory.Build.props
+		Directory.Packages.props = Directory.Packages.props
+		docker-compose.override.yml = docker-compose.override.yml
+		global.json = global.json
+		Dockerfile = Dockerfile
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{0BAE39A2-6CA2-4798-AF96-87894C39889A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hosts", "Hosts", "{10462A54-98F0-4876-B287-2A8FB68747FB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{857B0F4C-E8B2-4721-A243-330BAB1DB40E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Components", "Components", "{F6878ED8-0F66-475B-8101-812D249CF9CC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4095127A-2117-4FC7-B270-967BA2D2D6F4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{B95B746E-CA2F-4CC1-8E68-80ED2054BC92}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{74AF67B8-009B-4636-8F32-6198603CCD68}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notification", "Notification", "{99BCECDC-A7EC-404C-BCCA-16027A577C98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Open.SharedKernel", "Src\Open.SharedKernel\Open.SharedKernel.csproj", "{2E0F0E96-35DD-43AF-A9D2-AA8C48CAAB6D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Open.Core", "Src\Open.Core\Open.Core.csproj", "{D24C726C-E36B-40A7-B452-EAB99F32DA47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Open.MessageBroker", "Src\Open.MessageBroker\Open.MessageBroker.csproj", "{93C4BDD0-FCAE-4F5E-AEDB-B887039A40F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Open.ServiceDefaults", "Src\Open.ServiceDefaults\Open.ServiceDefaults.csproj", "{11F20C42-7FFB-4322-8CAD-2419B66EA525}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0BAE39A2-6CA2-4798-AF96-87894C39889A} = {FC8EC7CB-1133-4EFC-8694-F1B33F362534}
+		{10462A54-98F0-4876-B287-2A8FB68747FB} = {FC8EC7CB-1133-4EFC-8694-F1B33F362534}
+		{857B0F4C-E8B2-4721-A243-330BAB1DB40E} = {FC8EC7CB-1133-4EFC-8694-F1B33F362534}
+		{F6878ED8-0F66-475B-8101-812D249CF9CC} = {FC8EC7CB-1133-4EFC-8694-F1B33F362534}
+		{74AF67B8-009B-4636-8F32-6198603CCD68} = {857B0F4C-E8B2-4721-A243-330BAB1DB40E}
+		{99BCECDC-A7EC-404C-BCCA-16027A577C98} = {857B0F4C-E8B2-4721-A243-330BAB1DB40E}
+		{2E0F0E96-35DD-43AF-A9D2-AA8C48CAAB6D} = {0BAE39A2-6CA2-4798-AF96-87894C39889A}
+		{D24C726C-E36B-40A7-B452-EAB99F32DA47} = {0BAE39A2-6CA2-4798-AF96-87894C39889A}
+		{93C4BDD0-FCAE-4F5E-AEDB-B887039A40F2} = {0BAE39A2-6CA2-4798-AF96-87894C39889A}
+		{11F20C42-7FFB-4322-8CAD-2419B66EA525} = {0BAE39A2-6CA2-4798-AF96-87894C39889A}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2E0F0E96-35DD-43AF-A9D2-AA8C48CAAB6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E0F0E96-35DD-43AF-A9D2-AA8C48CAAB6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E0F0E96-35DD-43AF-A9D2-AA8C48CAAB6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E0F0E96-35DD-43AF-A9D2-AA8C48CAAB6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D24C726C-E36B-40A7-B452-EAB99F32DA47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D24C726C-E36B-40A7-B452-EAB99F32DA47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D24C726C-E36B-40A7-B452-EAB99F32DA47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D24C726C-E36B-40A7-B452-EAB99F32DA47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93C4BDD0-FCAE-4F5E-AEDB-B887039A40F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93C4BDD0-FCAE-4F5E-AEDB-B887039A40F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93C4BDD0-FCAE-4F5E-AEDB-B887039A40F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93C4BDD0-FCAE-4F5E-AEDB-B887039A40F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11F20C42-7FFB-4322-8CAD-2419B66EA525}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11F20C42-7FFB-4322-8CAD-2419B66EA525}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11F20C42-7FFB-4322-8CAD-2419B66EA525}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11F20C42-7FFB-4322-8CAD-2419B66EA525}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
