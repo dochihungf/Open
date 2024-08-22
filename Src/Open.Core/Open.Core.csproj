@@ -16,11 +16,15 @@
 
         <PackageReference Include="MediatR" />
         <PackageReference Include="MassTransit" />
-        <PackageReference Include="Ardalis.Specification" />
       
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Open.ServiceDefaults\Open.ServiceDefaults.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Specification\Builders\" />
+      <Folder Include="Specification\Evaluators\" />
     </ItemGroup>
 </Project>
