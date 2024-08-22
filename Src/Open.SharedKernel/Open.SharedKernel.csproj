@@ -6,4 +6,13 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Folder Include="Caching\Abstractions\" />
+      <Folder Include="Caching\Distributed\" />
+      <Folder Include="Caching\Enums\" />
+      <Folder Include="Caching\InMemory\" />
+      <Folder Include="Caching\Sequence\" />
+      <Folder Include="Caching\Settings\" />
+    </ItemGroup>
+
 </Project>
