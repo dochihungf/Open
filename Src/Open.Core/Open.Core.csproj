@@ -9,6 +9,7 @@
     <ItemGroup>
       <!-- EF Core -->
         <PackageReference Include="FluentValidation" />
+        <PackageReference Include="MySqlConnector" />
         <PackageReference Include="System.Linq.Dynamic.Core" Version="1.3.10" />
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.2" />
 
@@ -21,10 +22,5 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Open.ServiceDefaults\Open.ServiceDefaults.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Repositories\Dapper\" />
-      <Folder Include="Repositories\EntityFrameworkCore\" />
     </ItemGroup>
 </Project>
