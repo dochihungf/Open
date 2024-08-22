@@ -22,4 +22,9 @@
     <ItemGroup>
       <ProjectReference Include="..\Open.ServiceDefaults\Open.ServiceDefaults.csproj" />
     </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Repositories\Dapper\" />
+      <Folder Include="Repositories\EntityFrameworkCore\" />
+    </ItemGroup>
 </Project>
