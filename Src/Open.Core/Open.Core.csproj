@@ -22,9 +22,4 @@
     <ItemGroup>
       <ProjectReference Include="..\Open.ServiceDefaults\Open.ServiceDefaults.csproj" />
     </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Specification\Builders\" />
-      <Folder Include="Specification\Evaluators\" />
-    </ItemGroup>
 </Project>
