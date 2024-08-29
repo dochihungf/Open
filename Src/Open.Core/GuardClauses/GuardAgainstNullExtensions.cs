@@ -25,6 +25,7 @@ public static partial class GuardClauseExtensions
             {
                 throw exception ?? new ArgumentNullException(parameterName);
             }
+            throw exception ?? new ArgumentNullException(parameterName, message);
         }
         
         return input;
