@@ -9,7 +9,7 @@ namespace Open.Core.GuardClauses;
 /// <example>
 /// Guard.Against.Null(input, nameof(input));
 /// </example>
-public static partial class GuardClauseExtensions
+public static partial class GuardAgainstZeroExtensions
 {
     public static T Null<T>(this IGuardClause guardClause,
         [NotNull][ValidatedNotNull]T? input,

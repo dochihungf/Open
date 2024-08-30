@@ -3,5 +3,5 @@ using Open.ServiceDefaults;
 
 namespace Open.Core.CQRS;
 
-[Authorization]
+[Authorization(new [] { ActionExponent.View })]
 public interface IQuery<out TResponse> : IRequest<TResponse>;
