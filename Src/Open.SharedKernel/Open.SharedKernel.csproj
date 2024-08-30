@@ -21,6 +21,7 @@
 
     <ItemGroup>
       <PackageReference Include="Dapper" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.Binder" />
     </ItemGroup>
 
 </Project>

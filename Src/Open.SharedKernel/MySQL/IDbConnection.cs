@@ -16,24 +16,24 @@ public interface  IDbConnection : IUnitOfWork
     /// </summary>
     Task<IEnumerable<T>> QueryAsync<T>(
         string sql,
-        object param = null,
+        object? param = null,
         int? commandTimeout = null,
         CommandType? commandType = CommandType.Text);
 
     /// <summary>
     /// Execute a single-row query asynchronously using Task.
     /// </summary>
-    Task<T> QueryFirstOrDefaultAsync<T>(string sql,
-        object param = null,
+    Task<T?> QueryFirstOrDefaultAsync<T>(string sql,
+        object? param = null,
         int? commandTimeout = null,
         CommandType? commandType = CommandType.Text);
 
     /// <summary>
     ///  Execute a single-row query asynchronously using Task.
     /// </summary>
-    Task<T> QuerySingleOrDefaultAsync<T>(
+    Task<T?> QuerySingleOrDefaultAsync<T>(
         string sql,
-        object param = null,
+        object? param = null,
         int? commandTimeout = null,
         CommandType? commandType = CommandType.Text);
 
@@ -48,7 +48,7 @@ public interface  IDbConnection : IUnitOfWork
     /// <param name="commandType">Is it a stored proc or a batch?</param>
     Task<SqlMapper.GridReader> QueryMultipleAsync(
         string sql,
-        object param = null,
+        object? param = null,
         int? commandTimeout = null,
         CommandType? commandType = CommandType.Text);
 
@@ -67,9 +67,9 @@ public interface  IDbConnection : IUnitOfWork
     /// Execute parameterized SQL that selects a single value.
     /// </summary>
     /// <returns> The first cell selected as System.Object. </returns>
-    Task<object> ExecuteScalarAsync(
+    Task<object?> ExecuteScalarAsync(
         string sql,
-        object param,
+        object? param = null,
         int? commandTimeout = null,
         CommandType? commandType = CommandType.Text,
         bool autoCommit = false,
@@ -85,9 +85,14 @@ public interface  IDbConnection : IUnitOfWork
 
     /// <summary>
     /// Asynchronously copies all rows in the supplied <see cref="DataTable"/> to the destination table specified by the
-    /// <see cref="DestinationTableName"/> property of the <see cref="MySqlBulkCopy"/> object.
+    /// <see>
+    ///     <cref>DestinationTableName</cref>
+    /// </see>
+    /// property of the <see cref="MySqlBulkCopy"/> object.
     /// </summary>
     /// <param name="dataTable">The <see cref="DataTable"/> to copy.</param>
+    /// <param name="entites"></param>
+    /// <param name="autoCommit"></param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A <see cref="MySqlBulkCopyResult"/> with the result of the bulk copy operation.</returns>
     ValueTask<MySqlBulkCopyResult> WriteToServerAsync<T>(
