@@ -15,4 +15,12 @@
       <Folder Include="Caching\Settings\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Open.Core\Open.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Dapper" />
+    </ItemGroup>
+
 </Project>
