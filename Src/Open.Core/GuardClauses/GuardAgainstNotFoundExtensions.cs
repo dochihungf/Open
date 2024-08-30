@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
-using Open.Core.GuardClauses.Exceptions;
+using Open.Core.Exceptions;
 
 namespace Open.Core.GuardClauses;
 

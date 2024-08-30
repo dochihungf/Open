@@ -1,5 +1,5 @@
-﻿using Open.Core.GuardClauses;
-using Open.Core.GuardClauses.Exceptions;
+﻿using Open.Core.Exceptions;
+using Open.Core.GuardClauses;
 
 namespace GuardClauses.UnitTests;
 
