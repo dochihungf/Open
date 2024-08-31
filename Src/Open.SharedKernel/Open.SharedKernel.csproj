@@ -7,7 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Caching\Enums\" />
       <Folder Include="Caching\InMemory\" />
       <Folder Include="Caching\Sequence\" />
     </ItemGroup>
