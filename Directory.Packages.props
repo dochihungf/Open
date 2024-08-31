@@ -51,6 +51,7 @@
     <PackageVersion Include="Microsoft.AspNetCore.TestHost" Version="$(AspnetVersion)" />
     <PackageVersion Include="Microsoft.AspNetCore.DataProtection.StackExchangeRedis" Version="$(AspnetVersion)" />
     <PackageVersion Include="MySqlConnector" Version="2.3.7" />
+    <PackageVersion Include="Newtonsoft.Json" Version="13.0.1" />
     <!-- Entity Framework Core -->
     <PackageVersion Include="Pgvector" Version="0.3.0" />
     <PackageVersion Include="Pgvector.EntityFrameworkCore" Version="0.2.1" />
@@ -81,6 +82,7 @@
     <!-- Xabaril -->
     <PackageVersion Include="AspNetCore.HealthChecks.UI" Version="$(XabarilVersion)" />
     <PackageVersion Include="AspNetCore.HealthChecks.UI.Client" Version="$(XabarilVersion)" />
+    <PackageVersion Include="StackExchange.Redis" Version="2.8.0" />
     <!-- Testing -->
     <PackageVersion Include="xunit" Version="2.9.0" />
     <PackageVersion Include="xunit.runner.visualstudio" Version="2.8.2" />

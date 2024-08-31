@@ -7,12 +7,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Caching\Abstractions\" />
-      <Folder Include="Caching\Distributed\" />
       <Folder Include="Caching\Enums\" />
       <Folder Include="Caching\InMemory\" />
       <Folder Include="Caching\Sequence\" />
-      <Folder Include="Caching\Settings\" />
     </ItemGroup>
 
     <ItemGroup>
@@ -22,6 +19,9 @@
     <ItemGroup>
       <PackageReference Include="Dapper" />
       <PackageReference Include="Microsoft.Extensions.Configuration.Binder" />
+      <PackageReference Include="Newtonsoft.Json" />
+      <PackageReference Include="Polly" />
+      <PackageReference Include="StackExchange.Redis" />
     </ItemGroup>
 
 </Project>
