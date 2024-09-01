@@ -11,7 +11,7 @@ public class DbConnection : IDbConnection
 
     private readonly MySqlConnection _connection;
     private readonly string _connectionString;
-    private MySqlTransaction _transaction;
+    private MySqlTransaction? _transaction;
     private ConnectionState _currentState = ConnectionState.Connecting;
     private int _numberOfConnection = 0;
 
