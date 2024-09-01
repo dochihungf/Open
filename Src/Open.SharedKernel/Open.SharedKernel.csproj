@@ -6,16 +6,28 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\Open.Core\Open.Core.csproj" />
-    </ItemGroup>
+   
 
     <ItemGroup>
+      <PackageReference Include="AspNetCoreRateLimit" />
+      <PackageReference Include="AutoMapper" />
       <PackageReference Include="Dapper" />
       <PackageReference Include="Microsoft.Extensions.Configuration.Binder" />
       <PackageReference Include="Newtonsoft.Json" />
       <PackageReference Include="Polly" />
       <PackageReference Include="StackExchange.Redis" />
+
+      <!-- Authentication-->
+      <PackageReference Include="Microsoft.AspNetCore.Authentication.Certificate" Version="3.1.0" />
+      <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
+      <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.5.0" />
+      <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="8.0.0" />
+    </ItemGroup>
+
+  
+    <ItemGroup>
+      <ProjectReference Include="..\Open.Core\Open.Core.csproj" />
+      <ProjectReference Include="..\Open.Security\Open.Security.csproj" />
     </ItemGroup>
 
 </Project>
