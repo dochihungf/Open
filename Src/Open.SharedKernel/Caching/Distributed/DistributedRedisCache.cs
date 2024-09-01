@@ -30,8 +30,10 @@ public class DistributedRedisCache : IDistributedRedisCache
     public TimeSpan? DefaultAbsoluteExpireTime => TimeSpan.FromHours(24);
     
     #endregion
-    
-    public async Task<bool> ExistsAsync(string key)
+
+    #region Implements
+
+     public async Task<bool> ExistsAsync(string key)
     {
         Guard.Against.NullOrEmpty(key, nameof(key));
         
@@ -88,7 +90,10 @@ public class DistributedRedisCache : IDistributedRedisCache
         return await RunWithPolicyAsync(async () =>
         {
             var value = await GetStringAsync(key);
-            Guard.Against.NullOrEmpty(value, nameof(value));
+            if (string.IsNullOrEmpty(value))
+            {
+                return default(T);
+            }
             
             return JsonConvert.DeserializeObject<T>(value);
         });
@@ -125,6 +130,8 @@ public class DistributedRedisCache : IDistributedRedisCache
             return await SetAsync(key, value);
         });
     }
+
+    #endregion
     
     #region Private methods
 
