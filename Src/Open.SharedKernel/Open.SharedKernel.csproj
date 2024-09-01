@@ -7,10 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Caching\Sequence\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\Open.Core\Open.Core.csproj" />
     </ItemGroup>
 
