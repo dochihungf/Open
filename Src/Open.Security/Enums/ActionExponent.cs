@@ -1,4 +1,4 @@
-﻿namespace Open.ServiceDefaults;
+namespace Open.Security.Enums;
 
 public enum ActionExponent : int
 {

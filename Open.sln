@@ -57,6 +57,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuardClauses.UnitTests", "Tests\BuildingBlocks\GuardClauses.UnitTests\GuardClauses.UnitTests.csproj", "{4AB13E16-90EC-4DC4-A8F1-02616E47EB68}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Open.Security", "Src\Open.Security\Open.Security.csproj", "{4C54150C-513D-4A99-8991-F83432FB0E77}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,7 @@ Global
 		{CC4FF1E8-7885-4883-B78B-726E8B2DA81D} = {857B0F4C-E8B2-4721-A243-330BAB1DB40E}
 		{573DF62F-9065-40C1-A82A-0FED296E2985} = {4095127A-2117-4FC7-B270-967BA2D2D6F4}
 		{4AB13E16-90EC-4DC4-A8F1-02616E47EB68} = {573DF62F-9065-40C1-A82A-0FED296E2985}
+		{4C54150C-513D-4A99-8991-F83432FB0E77} = {0BAE39A2-6CA2-4798-AF96-87894C39889A}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{2E0F0E96-35DD-43AF-A9D2-AA8C48CAAB6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -103,5 +106,9 @@ Global
 		{4AB13E16-90EC-4DC4-A8F1-02616E47EB68}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4AB13E16-90EC-4DC4-A8F1-02616E47EB68}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4AB13E16-90EC-4DC4-A8F1-02616E47EB68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C54150C-513D-4A99-8991-F83432FB0E77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C54150C-513D-4A99-8991-F83432FB0E77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C54150C-513D-4A99-8991-F83432FB0E77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C54150C-513D-4A99-8991-F83432FB0E77}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

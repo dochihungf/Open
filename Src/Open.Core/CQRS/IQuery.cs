@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using Open.ServiceDefaults;
 
 namespace Open.Core.CQRS;
 

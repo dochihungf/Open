@@ -1,5 +1,6 @@
-﻿namespace Open.ServiceDefaults;
+using Open.Security.Enums;
 
+namespace Open.Security.Attributes;
 
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface | AttributeTargets.Method, AllowMultiple = true, Inherited = true)]
 public class AuthorizationAttribute : Attribute
