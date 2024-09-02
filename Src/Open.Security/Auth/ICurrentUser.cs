@@ -12,10 +12,10 @@ public interface ICurrentUser
 
 public class ExecutionContext
 {
-    public string? AccessToken { get; set; }
-    public Guid OwnerId { get; set; }
-    public string? Username { get; set; }
-    public string? Permission { get; set; }
+    public string? AccessToken { get; set; } = string.Empty;
+    public Guid OwnerId { get; set; } = Guid.Empty;
+    public string? Username { get; set; } = string.Empty;
+    public string? Permission { get; set; } = string.Empty;
     public HttpContext? HttpContext { get; set; }
 }
 

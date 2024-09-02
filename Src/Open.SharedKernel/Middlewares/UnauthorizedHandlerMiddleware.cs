@@ -6,6 +6,7 @@ using Microsoft.Extensions.Localization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Open.Core.Results;
+using Open.SharedKernel.Properties;
 
 namespace Open.SharedKernel.Middlewares;
 
@@ -26,11 +27,11 @@ public class UnauthorizedHandlerMiddleware
             context.Response.StatusCode = (int)HttpStatusCode.OK;
             context.Response.ContentType = "application/json";
 
-            //var localizer = context.RequestServices.GetRequiredService<IStringLocalizer<Resources>>();
-            // await context.Response.WriteAsync(JsonConvert.SerializeObject(Result.Unauthorized(localizer["unauthorized"].Value), new JsonSerializerSettings
-            // {
-            //     ContractResolver = new CamelCasePropertyNamesContractResolver()
-            // }));
+            var localize = context.RequestServices.GetRequiredService<IStringLocalizer<Resources>>();
+             await context.Response.WriteAsync(JsonConvert.SerializeObject(Result.Unauthorized(localize["unauthorized"].Value), new JsonSerializerSettings
+             {
+                 ContractResolver = new CamelCasePropertyNamesContractResolver()
+             }));
         }
     }
 }

@@ -16,6 +16,7 @@ using Open.SharedKernel.Extensions;
 using Open.SharedKernel.Libraries.Security;
 using Open.SharedKernel.Libraries.Utilities;
 using Open.SharedKernel.MySQL;
+using Open.SharedKernel.Properties;
 using StackExchange.Redis;
 
 namespace Open.SharedKernel.Repositories.Dapper;
@@ -144,8 +145,8 @@ public class ReadOnlyRepository<TEntity> : IReadOnlyRepository<TEntity> where TE
                 var property = typeof(TEntity).GetProperty(field.FieldName);
                 if (property == null || !Attribute.IsDefined(property, typeof(FilterableAttribute)))
                 {
-                    // var localizer = _provider.GetRequiredService<IStringLocalizer<Resources>>();
-                    // throw new BadRequestException(localizer["repository_filter_is_invalid"].Value);
+                    var localizer = _provider.GetRequiredService<IStringLocalizer<Resources>>();
+                    throw new BadRequestException(localizer["repository_filter_is_invalid"].Value);
                 }
 
                 var hasUnicode = field.Value.HasUnicode();

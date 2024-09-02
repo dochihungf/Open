@@ -16,6 +16,7 @@ using Open.SharedKernel.Extensions;
 using Open.SharedKernel.Libraries.Helpers;
 using Open.SharedKernel.Libraries.Security;
 using Open.SharedKernel.MySQL;
+using Open.SharedKernel.Properties;
 
 namespace Open.SharedKernel.Repositories.Dapper;
 
@@ -26,16 +27,19 @@ public class WriteOnlyRepository<TEntity> : IWriteOnlyRepository<TEntity> where 
     protected readonly ICurrentUser _currentUser;
     protected readonly ISequenceCaching _sequenceCaching;
     protected readonly bool _isSystemTable;
+    protected readonly IStringLocalizer<Resources> _localizer;
     
     public WriteOnlyRepository(IDbConnection connection,
         ICurrentUser currentUser,
-        ISequenceCaching sequenceCaching) 
+        ISequenceCaching sequenceCaching,
+        IStringLocalizer<Resources> localizer) 
     {
         _connection = connection;
         _currentUser = currentUser;
         _sequenceCaching = sequenceCaching;
         _tableName = ((TEntity)Activator.CreateInstance(typeof(TEntity))!).GetTableName();
         _isSystemTable = typeof(TEntity).GetProperty("OwnerId") == null;
+        _localizer = localizer;
     }
     
     public IUnitOfWork UnitOfWork => _connection;
@@ -57,7 +61,7 @@ public class WriteOnlyRepository<TEntity> : IWriteOnlyRepository<TEntity> where 
     {
         var queryCmd = $"SELECT * FROM {_tableName} WHERE Id = @Id AND IsDeleted = 0";
         var currentEntity = await _connection.QuerySingleOrDefaultAsync<TEntity>(queryCmd, new { entity.Id })
-                            ?? throw new BadRequestException(); // Xem lại
+                            ?? throw new BadRequestException(_localizer["repository_data_does_not_exist_or_was_deleted"].Value);
         
         var sqlCommand = $"UPDATE {_tableName} AS T SET ";
         var columnParams = new List<string>();
@@ -138,8 +142,7 @@ public class WriteOnlyRepository<TEntity> : IWriteOnlyRepository<TEntity> where 
 
         if (!entities.Any() || entities.Count == ids.Count)
         {
-            // xem lại
-            throw new BadRequestException();
+            throw new BadRequestException(_localizer["repository_data_does_not_exist_or_was_deleted"].Value);
         }
         
         BeforeDelete(entities);
