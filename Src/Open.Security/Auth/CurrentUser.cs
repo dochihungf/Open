@@ -9,7 +9,7 @@ public class CurrentUser : ICurrentUser
     #region Properties
 
     private readonly IHttpContextAccessor _accessor;
-    private ExecutionContext _context { get; set; }
+    private ExecutionContext? _context { get; set; }
     public string TokenId => Guid.NewGuid().ToString();
 
     public ExecutionContext Context

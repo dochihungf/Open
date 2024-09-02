@@ -12,7 +12,7 @@ public interface IReadOnlyRepository<TEntity> where TEntity : EntityBase
     
     Task<IEnumerable<TResult>> GetAllAsync<TResult>(CancellationToken cancellationToken = default);
 
-    Task<TResult> GetByIdAsync<TResult>(object id, CancellationToken cancellationToken = default);
+    Task<TResult?> GetByIdAsync<TResult>(object id, CancellationToken cancellationToken = default);
 
     Task<IPagedList<TResult>> GetPagingAsync<TResult>(PagingRequest request, CancellationToken cancellationToken = default);
 

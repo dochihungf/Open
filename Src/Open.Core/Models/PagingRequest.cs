@@ -2,8 +2,9 @@
 
 public class PagingRequest
 {
-    private int _page = 0;
+    private int _page = 1;
     private int _size = 20;
+    private int _from = 1;
 
     public int PageIndex
     {
@@ -41,14 +42,27 @@ public class PagingRequest
         }
     }
     
+    public int From
+    {
+        get
+        {
+            return _from;
+        }
+
+        set
+        {
+            if (value <= 0 || value > 1000)
+            {
+                throw new ArgumentNullException($"From should be between 1 and 1000");
+            }
+
+            _size = value;
+        }
+    }
     
-    public IEnumerable<Sort>? Sort { get; set; }
+    public int Offset => (_page - _from) * _size;
+    
+    public IEnumerable<Sort>? Sorts { get; set; }
     
     public Filter? Filter { get; set; }
-
-    public PagingRequest(int page, int size)
-    {
-        PageIndex = page;
-        PageSize = size;
-    }
 }

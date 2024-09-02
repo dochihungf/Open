@@ -30,4 +30,9 @@
       <ProjectReference Include="..\Open.Security\Open.Security.csproj" />
     </ItemGroup>
 
+  
+    <ItemGroup>
+      <Folder Include="Models\" />
+    </ItemGroup>
+
 </Project>

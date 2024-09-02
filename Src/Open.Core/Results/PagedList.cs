@@ -27,7 +27,7 @@ public class PagedList<T> : IPagedList<T>
     [JsonInclude]
     public int Pages { get; private set; }
     [JsonInclude]
-    public IEnumerable<T> Items { get; private set; }
+    public IEnumerable<T>? Items { get; private set; }
     [JsonInclude]
     public bool HasPrevious => Index - From > 0;
     [JsonInclude]
