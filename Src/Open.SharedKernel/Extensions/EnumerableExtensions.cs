@@ -1,25 +1,21 @@
+using Open.Core.GuardClauses;
+
 namespace Open.SharedKernel.Extensions;
 
 public static partial class Extensions
 {
     public static IEnumerable<List<TSource>> ChunkList<TSource>(this IEnumerable<TSource> source, int size)
     {
-        if (source == null)
-        {
-            throw new ArgumentNullException(nameof(source));
-        }
+        Guard.Against.Null(source, nameof(source));
+        Guard.Against.NegativeOrZero(size, nameof(size));
 
-        if (size < 1)
-        {
-            throw new ArgumentOutOfRangeException("size", "size must be greater than 0");
-        }
-
+        var list = source.ToList();
+        int count = list.Count;
         var result = new List<List<TSource>>();
         for (int i = 0; i < source.Count(); i += size)
         {
-            //yield return source.ToList().GetRange(i, Math.Min(size, source.Count() - i));
-            result.Add(source.ToList().GetRange(i, Math.Min(size, source.Count() - i)));
+            yield return list.Skip(i).Take(size).ToList();
         }
-        return result;
+        
     }
 }

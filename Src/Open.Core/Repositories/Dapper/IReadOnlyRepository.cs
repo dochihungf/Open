@@ -1,10 +1,11 @@
 ﻿using Open.Core.Models;
 using Open.Core.Results;
 using Open.Core.SeedWork;
+using Open.Core.SeedWork.Interfaces;
 
 namespace Open.Core.Repositories.Dapper;
 
-public interface IReadOnlyRepository<TEntity> where TEntity : EntityBase
+public interface IReadOnlyRepository<TEntity> where TEntity : IEntityAuditBase
 {
     Task<CacheResult<List<TResult>>> GetAllCacheAsync<TResult>(CancellationToken cancellationToken = default);
 

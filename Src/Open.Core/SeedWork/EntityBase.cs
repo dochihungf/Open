@@ -9,7 +9,7 @@ public class EntityBase<TKey> : CoreEntity, IEntityBase<TKey>
     
 }
 
-public class EntityBase : EntityBase<Guid>
+public class EntityBase : EntityBase<Guid>, IEntityBase
 {
     
 }

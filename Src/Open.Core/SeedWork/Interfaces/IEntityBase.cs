@@ -2,7 +2,7 @@
 
 public interface IEntityBase<TKey> : ICoreEntity
 {
-    TKey Id { get; }
+    TKey Id { get; set; }
 }
 
 public interface IEntityBase : IEntityBase<Guid>

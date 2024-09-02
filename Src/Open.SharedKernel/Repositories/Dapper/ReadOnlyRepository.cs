@@ -7,6 +7,7 @@ using Open.Core.Models;
 using Open.Core.Repositories.Dapper;
 using Open.Core.Results;
 using Open.Core.SeedWork;
+using Open.Core.SeedWork.Interfaces;
 using Open.Security.Auth;
 using Open.SharedKernel.Attributes;
 using Open.SharedKernel.Caching.Sequence;
@@ -19,7 +20,7 @@ using StackExchange.Redis;
 
 namespace Open.SharedKernel.Repositories.Dapper;
 
-public class ReadOnlyRepository<TEntity> : IReadOnlyRepository<TEntity> where TEntity : EntityBase
+public class ReadOnlyRepository<TEntity> : IReadOnlyRepository<TEntity> where TEntity : IEntityAuditBase
 {
     protected IDbConnection _connection;
     protected readonly string _tableName;
