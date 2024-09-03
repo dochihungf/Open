@@ -2,7 +2,7 @@ using System.ComponentModel;
 
 namespace Open.Identity.Domain.Enums;
 
-public enum OtpType
+public enum OTPType
 {
     [Description("None")]
     None = 0,
