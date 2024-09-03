@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.DependencyInjection;
+using Open.Constants;
 using Open.Core.Exceptions;
 using Open.Security.Auth;
 using Open.Security.Constants;
 using Open.SharedKernel.Caching.Sequence;
-using Open.SharedKernel.Constants;
 
 namespace Open.SharedKernel.Filters;
 

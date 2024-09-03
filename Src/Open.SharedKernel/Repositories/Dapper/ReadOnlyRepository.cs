@@ -1,23 +1,19 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Localization;
-using Microsoft.IdentityModel.Tokens;
-using Open.Core.Constants;
+using Open.Constants;
 using Open.Core.Exceptions;
 using Open.Core.Models;
 using Open.Core.Repositories.Dapper;
 using Open.Core.Results;
-using Open.Core.SeedWork;
 using Open.Core.SeedWork.Interfaces;
 using Open.Security.Auth;
 using Open.SharedKernel.Attributes;
 using Open.SharedKernel.Caching.Sequence;
-using Open.SharedKernel.Constants;
 using Open.SharedKernel.Extensions;
 using Open.SharedKernel.Libraries.Security;
 using Open.SharedKernel.Libraries.Utilities;
 using Open.SharedKernel.MySQL;
 using Open.SharedKernel.Properties;
-using StackExchange.Redis;
 
 namespace Open.SharedKernel.Repositories.Dapper;
 

@@ -1,5 +1,5 @@
 ﻿using Microsoft.IdentityModel.Tokens;
-using Open.Core.Constants;
+using Open.Constants;
 
 namespace Open.Core.Models;
 

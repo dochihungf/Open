@@ -1,4 +1,4 @@
-﻿namespace Open.Core.Constants;
+namespace Open.Constants;
 
 public enum WhereType
 {

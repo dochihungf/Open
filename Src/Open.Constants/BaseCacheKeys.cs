@@ -1,4 +1,4 @@
-﻿namespace Open.SharedKernel.Constants;
+namespace Open.Constants;
 
 public static class BaseCacheKeys
 {

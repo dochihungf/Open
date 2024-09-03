@@ -2,6 +2,7 @@
 using MassTransit.Internals;
 using Microsoft.Extensions.Localization;
 using MySqlConnector;
+using Open.Constants;
 using Open.Core.Exceptions;
 using Open.Core.GuardClauses;
 using Open.Core.Repositories.Dapper;
@@ -11,7 +12,6 @@ using Open.Core.UnitOfWork;
 using Open.Security.Auth;
 using Open.SharedKernel.Attributes;
 using Open.SharedKernel.Caching.Sequence;
-using Open.SharedKernel.Constants;
 using Open.SharedKernel.Extensions;
 using Open.SharedKernel.Libraries.Helpers;
 using Open.SharedKernel.Libraries.Security;
