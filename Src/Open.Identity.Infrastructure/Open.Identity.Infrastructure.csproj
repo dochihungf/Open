@@ -17,7 +17,6 @@
 
     <ItemGroup>
       <Folder Include="Persistence\CompiledModels\" />
-      <Folder Include="Persistence\EntityConfigurations\" />
     </ItemGroup>
 
 </Project>
