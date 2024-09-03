@@ -1,16 +1,15 @@
-namespace Open.Identity.Infrastructure.Persistence.EntityConfigurations;
-
-public class EntityAuditBaseEntityTypeConfiguration<TEntity> : IEntityTypeConfiguration<TEntity> where TEntity : EntityAuditBase
+namespace Open.Identity.Infrastructure.Persistence.EntityConfigurations; 
+public class PersonalizedEntityAuditBaseEntityTypeConfiguration<TEntity> : IEntityTypeConfiguration<TEntity> where TEntity : PersonalizedEntityAuditBase
 {
-    public void Configure(EntityTypeBuilder<TEntity> builder)
+    public virtual void Configure(EntityTypeBuilder<TEntity> builder)
     {
         builder
             .Property(e => e.CreatedBy)
-            .HasMaxLength(DataSchemaLength.ExtraLarge);
+            .HasMaxLength(255);
         
         builder
             .Property(e => e.LastModifiedBy)
-            .HasMaxLength(DataSchemaLength.ExtraLarge)
+            .HasMaxLength(255)
             .IsRequired(false);
 
         builder
@@ -19,7 +18,7 @@ public class EntityAuditBaseEntityTypeConfiguration<TEntity> : IEntityTypeConfig
         
         builder
             .Property(e => e.DeletedBy)
-            .HasMaxLength(DataSchemaLength.ExtraLarge)
+            .HasMaxLength(255)
             .IsRequired(false);
         
         builder
@@ -29,5 +28,9 @@ public class EntityAuditBaseEntityTypeConfiguration<TEntity> : IEntityTypeConfig
         builder
             .Property(e => e.IsDeleted)
             .HasDefaultValue(false);
+
+        builder
+            .Property(e => e.OwnerId)
+            .IsRequired();
     }
 }

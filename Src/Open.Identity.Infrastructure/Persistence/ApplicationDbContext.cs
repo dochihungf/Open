@@ -1,7 +1,3 @@
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage;
-using Open.Core.UnitOfWork;
-
 namespace Open.Identity.Infrastructure.Persistence;
 
 public class ApplicationDbContext : DbContext, IUnitOfWork

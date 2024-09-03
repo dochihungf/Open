@@ -1,6 +1,3 @@
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
-
 namespace Open.Identity.Infrastructure.Persistence;
 
 public class ApplicationDbContextFactory: IDesignTimeDbContextFactory<ApplicationDbContext>
