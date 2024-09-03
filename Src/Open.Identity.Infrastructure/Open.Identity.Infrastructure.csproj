@@ -7,7 +7,17 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Pomelo.EntityFrameworkCore.MySql"/>
+    </ItemGroup>
+  
+    <ItemGroup>
       <ProjectReference Include="..\Open.Identity.Domain\Open.Identity.Domain.csproj" />
+      <ProjectReference Include="..\Open.SharedKernel\Open.SharedKernel.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Persistence\CompiledModels\" />
+      <Folder Include="Persistence\EntityConfigurations\" />
     </ItemGroup>
 
 </Project>
