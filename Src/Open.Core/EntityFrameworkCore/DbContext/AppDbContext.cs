@@ -6,25 +6,27 @@ namespace Open.Core.EntityFrameworkCore;
 
 public class AppDbContext : DbContext, IAppDbContext
 {
-    private IDbContextTransaction? _currentTransaction;
+    protected IDbContextTransaction? CurrentTransaction;
     
-    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+    public AppDbContext(DbContextOptions options) : base(options)
     {
         
     }
     
-    public IDbContextTransaction? GetCurrentTransaction() => _currentTransaction;
+    public IDbContextTransaction? GetCurrentTransaction() => CurrentTransaction;
     
     public IUnitOfWork UnitOfWork => this;
-    
-    public async Task CommitAsync(CancellationToken cancellationToken = default)
+
+    #region UnitOfWork
+
+    public virtual async Task CommitAsync(CancellationToken cancellationToken = default)
     {
         try
         {
             await SaveChangesAsync(cancellationToken);
-            if (_currentTransaction != null)
+            if (CurrentTransaction != null)
             {
-                await _currentTransaction.CommitAsync(cancellationToken);
+                await CurrentTransaction.CommitAsync(cancellationToken);
             }
         }
         catch
@@ -34,42 +36,44 @@ public class AppDbContext : DbContext, IAppDbContext
         }
         finally
         {
-            if (_currentTransaction != null)
+            if (CurrentTransaction != null)
             {
-                _currentTransaction.Dispose();
-                _currentTransaction = null;
+                CurrentTransaction.Dispose();
+                CurrentTransaction = null;
             }
         }
     }
 
-    public async Task RollbackAsync(CancellationToken cancellationToken = default)
+    public virtual async Task RollbackAsync(CancellationToken cancellationToken = default)
     {
         try
         {
-            if (_currentTransaction == null)
+            if (CurrentTransaction == null)
             {
                 return;
             }
-            await _currentTransaction.RollbackAsync(cancellationToken);
+            await CurrentTransaction.RollbackAsync(cancellationToken);
         }
         finally
         {
-            if (_currentTransaction != null)
+            if (CurrentTransaction != null)
             {
-                _currentTransaction.Dispose();
-                _currentTransaction = null;
+                CurrentTransaction.Dispose();
+                CurrentTransaction = null;
             }
         }
     }
 
-    public async Task<IDbContextTransaction?> BeginTransactionAsync()
+    public virtual async Task<IDbContextTransaction?> BeginTransactionAsync()
     {
-        if (_currentTransaction != null) return null;
+        if (CurrentTransaction != null) return null;
 
-        _currentTransaction = await base.Database.BeginTransactionAsync();
+        CurrentTransaction = await base.Database.BeginTransactionAsync();
 
-        return _currentTransaction;
+        return CurrentTransaction;
     }
+
+    #endregion
     
     #region Dispose
     public override void Dispose()
