@@ -2,7 +2,7 @@ namespace Open.Identity.Infrastructure.Persistence.EntityConfigurations;
 
 public class EntityAuditBaseEntityTypeConfiguration<TEntity> : IEntityTypeConfiguration<TEntity> where TEntity : EntityAuditBase
 {
-    public void Configure(EntityTypeBuilder<TEntity> builder)
+    public virtual void Configure(EntityTypeBuilder<TEntity> builder)
     {
         builder
             .Property(e => e.CreatedBy)
