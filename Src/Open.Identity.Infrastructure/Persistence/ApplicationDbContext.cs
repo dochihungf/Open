@@ -33,7 +33,7 @@ public class ApplicationDbContext : DbContext, IUnitOfWork
             if (_currentTransaction != null)
             {
                 _currentTransaction.Dispose();
-                _currentTransaction = default(IDbContextTransaction)!;
+                _currentTransaction = null;
             }
         }
     }
@@ -42,7 +42,7 @@ public class ApplicationDbContext : DbContext, IUnitOfWork
     {
         try
         {
-            if (_currentTransaction == default!)
+            if (_currentTransaction == null)
             {
                 return;
             }
@@ -53,12 +53,12 @@ public class ApplicationDbContext : DbContext, IUnitOfWork
             if (_currentTransaction != null)
             {
                 _currentTransaction.Dispose();
-                _currentTransaction = default!;
+                _currentTransaction = null;
             }
         }
     }
 
-    public async Task<IDbContextTransaction> BeginTransactionAsync()
+    public async Task<IDbContextTransaction?> BeginTransactionAsync()
     {
         if (_currentTransaction != null) return null;
 
