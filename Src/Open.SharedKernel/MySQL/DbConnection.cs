@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using Dapper;
+using Microsoft.EntityFrameworkCore.Storage;
 using MySqlConnector;
 using Open.SharedKernel.Settings;
 
@@ -326,17 +327,17 @@ public class DbConnection : IDbConnection
     {
         await CurrentTransaction.CommitAsync(cancellationToken);
     }
-        
-    public void BeginTransaction()
-    {
-        throw new NotImplementedException();
-    }
     
     public async Task RollbackAsync(CancellationToken cancellationToken = default)
     {
         await CurrentTransaction.RollbackAsync(cancellationToken);
     }
-    
+
+    public async Task<IDbContextTransaction?> BeginTransactionAsync()
+    {
+        throw new NotImplementedException();
+    }
+
     #endregion
 
     #region Dispose

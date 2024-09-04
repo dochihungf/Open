@@ -1,4 +1,6 @@
-﻿namespace Open.Core.UnitOfWork;
+﻿using Microsoft.EntityFrameworkCore.Storage;
+
+namespace Open.Core.UnitOfWork;
 
 public interface IUnitOfWork : IDisposable
 {
@@ -8,5 +10,5 @@ public interface IUnitOfWork : IDisposable
 
     Task RollbackAsync(CancellationToken cancellationToken = default);
 
-    void BeginTransaction();
+    Task<IDbContextTransaction?> BeginTransactionAsync();
 }
