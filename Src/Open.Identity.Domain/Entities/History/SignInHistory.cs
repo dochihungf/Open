@@ -1,7 +1,7 @@
 namespace Open.Identity.Domain.Entities;
 
 [Table(TableName.SignInHistory)]
-public class SignInHistory : EntityAuditBase
+public class SignInHistory : EntityBase
 {
     public string Username { get; set; }
 

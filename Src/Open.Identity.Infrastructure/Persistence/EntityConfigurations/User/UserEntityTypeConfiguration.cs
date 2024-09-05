@@ -27,33 +27,33 @@ public class UserEntityTypeConfiguration : EntityAuditBaseEntityTypeConfiguratio
         
         builder
             .Property(u => u.Username)
-            .HasMaxLength(50);
+            .HasMaxLength(DataSchemaLength.Medium);
 
         builder
             .Property(u => u.PasswordHash)
-            .HasMaxLength(255);
+            .HasMaxLength(DataSchemaLength.ExtraLarge);
 
         builder
             .Property(u => u.Salt)
-            .HasMaxLength(255);
+            .HasMaxLength(DataSchemaLength.ExtraLarge);
 
         builder
             .Property(u => u.PhoneNumber)
-            .HasMaxLength(20)
+            .HasMaxLength(DataSchemaLength.Small)
             .IsUnicode(false);
 
         builder
             .Property(u => u.Email)
-            .HasMaxLength(255)
+            .HasMaxLength(DataSchemaLength.ExtraLarge)
             .IsUnicode(false);
 
         builder
             .Property(u => u.FirstName)
-            .HasMaxLength(50);
+            .HasMaxLength(DataSchemaLength.Medium);
 
         builder
             .Property(u => u.LastName)
-            .HasMaxLength(50);
+            .HasMaxLength(DataSchemaLength.Medium);
         
         builder.Property(cd => cd.Gender)
             .HasConversion(
@@ -69,6 +69,26 @@ public class UserEntityTypeConfiguration : EntityAuditBaseEntityTypeConfiguratio
             .HasOne(u => u.UserConfig)
             .WithOne(uc => uc.User)
             .HasForeignKey<UserConfig>(u => u.OwnerId);
+        
+        builder
+            .HasOne(u => u.SecretKey)
+            .WithOne(uc => uc.User)
+            .HasForeignKey<SecretKey>(u => u.OwnerId);
+        
+        builder
+            .HasOne(u => u.OTP)
+            .WithOne(uc => uc.User)
+            .HasForeignKey<OTP>(u => u.OwnerId);
+        
+        builder
+            .HasOne(u => u.MFA)
+            .WithOne(uc => uc.User)
+            .HasForeignKey<MFA>(u => u.OwnerId);
+        
+        builder
+            .HasMany(u => u.SignInHistories)
+            .WithOne(ur => ur.User)
+            .HasForeignKey(ur => ur.UserId);
         
         #endregion
     }

@@ -33,11 +33,19 @@ public class User : EntityAuditBase
 
     #region Navigations
 
+    #region Navigations
+    
     public virtual UserConfig UserConfig { get; set; }
     public virtual SecretKey SecretKey { get; set; }
-    public virtual OTP Otp { get; set; }
-    public virtual MFA Mfa { get; set; }
-
+    public virtual OTP OTP { get; set; }
+    public virtual MFA MFA { get; set; }
+    
+    public ICollection<RefreshToken> RefreshTokens { get; set; }
+    public ICollection<UserRole> UserRoles { get; set; }
+    public ICollection<UserPermission> UserPermissions { get; set; }
+    public ICollection<SignInHistory> SignInHistories { get; set; }
+    
+    #endregion
     #endregion
     
 }

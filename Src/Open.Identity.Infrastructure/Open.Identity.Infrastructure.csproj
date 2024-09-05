@@ -18,6 +18,8 @@
 
     <ItemGroup>
       <Folder Include="Persistence\CompiledModels\" />
+      <Folder Include="Persistence\EntityConfigurations\IdentityServer\" />
+      <Folder Include="Persistence\EntityConfigurations\Log\" />
     </ItemGroup>
 
 </Project>
