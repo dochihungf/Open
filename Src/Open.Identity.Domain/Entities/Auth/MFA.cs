@@ -2,7 +2,7 @@ using Open.Identity.Domain.Enums;
 
 namespace Open.Identity.Domain.Entities;
 
-public class MFA : PersonalizedEntityAuditBase
+public class MFA : PersonalizedEntityBase
 {
     public MFAType Type { get; set; } = MFAType.None;
 
@@ -14,3 +14,4 @@ public class MFA : PersonalizedEntityAuditBase
     
     #endregion
 }
+

@@ -1,6 +1,6 @@
 namespace Open.Identity.Domain.Entities;
 
-public class UserConfig : PersonalizedEntityAuditBase
+public class UserConfig : PersonalizedEntityBase
 {
     public string Json { get; set; }
     

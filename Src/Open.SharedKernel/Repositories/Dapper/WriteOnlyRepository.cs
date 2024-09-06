@@ -71,7 +71,6 @@ public class WriteOnlyRepository<TEntity> : IWriteOnlyRepository<TEntity> where 
             nameof(EntityAuditBase.CreatedDate),
             nameof(EntityAuditBase.CreatedBy),
             nameof(EntityAuditBase.IsDeleted),
-            nameof(PersonalizedEntityBase.OwnerId),
         };
         
         var properties = entity.GetPropertyInfos();

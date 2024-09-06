@@ -1,3 +1,5 @@
+using Open.Identity.Infrastructure.Options;
+
 namespace Open.Identity.Infrastructure.Persistence;
 
 public class ApplicationDbContextFactory: IDesignTimeDbContextFactory<ApplicationDbContext>
@@ -6,13 +8,13 @@ public class ApplicationDbContextFactory: IDesignTimeDbContextFactory<Applicatio
     {
         var connectionString = "Server=localhost; Port=3306; Database=identity_db; Uid=root; Pwd=root; SslMode=Preferred;";
         var options = new DbContextOptionsBuilder<ApplicationDbContext>();
-        options
-            .UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
+        var identityStoreOptions = new IdentityStoreOptions();
+        options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
             .LogTo(s => System.Diagnostics.Debug.WriteLine(s))
             .EnableDetailedErrors(true)
             .EnableSensitiveDataLogging(true);
         
-        var context = new ApplicationDbContext(options.Options);
+        var context = new ApplicationDbContext(options.Options, identityStoreOptions);
         
         return context;
     }

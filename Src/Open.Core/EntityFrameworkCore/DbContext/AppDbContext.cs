@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Reflection;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using Open.Core.UnitOfWork;
 
@@ -16,7 +17,7 @@ public class AppDbContext : DbContext, IAppDbContext
     public IDbContextTransaction? GetCurrentTransaction() => CurrentTransaction;
     
     public IUnitOfWork UnitOfWork => this;
-
+    
     #region UnitOfWork
 
     public virtual async Task CommitAsync(CancellationToken cancellationToken = default)

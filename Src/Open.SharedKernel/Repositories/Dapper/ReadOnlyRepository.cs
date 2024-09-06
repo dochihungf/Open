@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using MassTransit.Internals;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Localization;
 using Open.Constants;
 using Open.Core.Exceptions;
@@ -126,9 +127,12 @@ public class ReadOnlyRepository<TEntity> : IReadOnlyRepository<TEntity> where TE
             cmd += $" AND T.OwnerId = '{_currentUser.Context.OwnerId}'";
             countCmd += $" AND T.OwnerId = '{_currentUser.Context.OwnerId}'";
         }
-
-        cmd += " AND T.IsDeleted = 0";
-        countCmd += " AND T.IsDeleted = 0";
+        
+        if (typeof(TEntity).HasInterface(typeof(IAuditable)))
+        {
+            cmd += " AND T.IsDeleted = 0";
+            countCmd += " AND T.IsDeleted = 0";
+        }
 
         // Filter
         var param = new Dictionary<string, object>();
@@ -141,8 +145,8 @@ public class ReadOnlyRepository<TEntity> : IReadOnlyRepository<TEntity> where TE
                 var property = typeof(TEntity).GetProperty(field.FieldName);
                 if (property == null || !Attribute.IsDefined(property, typeof(FilterableAttribute)))
                 {
-                    var localizer = _provider.GetRequiredService<IStringLocalizer<Resources>>();
-                    throw new BadRequestException(localizer["repository_filter_is_invalid"].Value);
+                    var localize = _provider.GetRequiredService<IStringLocalizer<Resources>>();
+                    throw new BadRequestException(localize["repository_filter_is_invalid"].Value);
                 }
 
                 var hasUnicode = field.Value.HasUnicode();
@@ -197,7 +201,10 @@ public class ReadOnlyRepository<TEntity> : IReadOnlyRepository<TEntity> where TE
         var cmd = $"SELECT COUNT(*) FROM {_tableName} as T WHERE 1=1";
         if (typeof(TEntity).GetProperty("OwnerId") != null) cmd += $" AND T.OwnerId = '{_currentUser.Context.OwnerId}'";
 
-        cmd += " AND T.IsDeleted = 0";
+        if (typeof(TEntity).HasInterface(typeof(IAuditable)))
+        {
+            cmd += " AND T.IsDeleted = 0";
+        }
 
         return await _connection.QuerySingleOrDefaultAsync<long>(cmd);
     }

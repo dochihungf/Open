@@ -1,9 +1,15 @@
+using Open.Identity.Infrastructure;
+using Open.SharedKernel.Settings;
+
 var builder = WebApplication.CreateBuilder(args);
+
+CoreSettings.SetConnectionStrings(builder.Configuration);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddInfrastructure(configuration: builder.Configuration);
 
 var app = builder.Build();
 

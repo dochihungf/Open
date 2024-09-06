@@ -31,20 +31,17 @@ public class User : EntityAuditBase
     public AuthenticatorType AuthenticatorType { get; set; }
 
     #region Navigations
-
-    #region Navigations
     
     public virtual UserConfig UserConfig { get; set; }
     public virtual SecretKey SecretKey { get; set; }
-    public virtual OTP OTP { get; set; }
     public virtual MFA MFA { get; set; }
     
+    public ICollection<OTP> OTPs { get; set; }
     public ICollection<RefreshToken> RefreshTokens { get; set; }
     public ICollection<UserRole> UserRoles { get; set; }
     public ICollection<UserPermission> UserPermissions { get; set; }
     public ICollection<SignInHistory> SignInHistories { get; set; }
     
-    #endregion
     #endregion
     
 }
