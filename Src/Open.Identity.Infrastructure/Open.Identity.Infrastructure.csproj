@@ -17,9 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Persistence\CompiledModels\" />
-      <Folder Include="Persistence\EntityConfigurations\IdentityServer\" />
-      <Folder Include="Persistence\EntityConfigurations\Log\" />
+      <Folder Include="Repositories\User\" />
     </ItemGroup>
 
 </Project>

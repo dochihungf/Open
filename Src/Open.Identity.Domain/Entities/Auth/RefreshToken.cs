@@ -1,6 +1,5 @@
 namespace Open.Identity.Domain.Entities;
 
-[Table(TableName.RefreshToken)]
 public class RefreshToken : PersonalizedEntityAuditBase
 {
     public string Token { get; set; }

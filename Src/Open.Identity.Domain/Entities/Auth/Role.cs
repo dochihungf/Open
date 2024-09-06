@@ -1,6 +1,5 @@
 namespace Open.Identity.Domain.Entities;
 
-[Table(TableName.Role)]
 public class Role : EntityAuditBase
 {
     public string Code { get; set; }

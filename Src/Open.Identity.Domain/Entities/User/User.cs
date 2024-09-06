@@ -4,7 +4,6 @@ using Open.Security.Enums;
 
 namespace Open.Identity.Domain.Entities;
 
-[Table(TableName.User)]
 public class User : EntityAuditBase
 {
     public string Username { get; set; }

@@ -1,6 +1,5 @@
 namespace Open.Identity.Domain.Entities;
 
-[Table(TableName.UserPermission)]
 public class UserPermission : EntityAuditBase
 {
     #region Relationships

@@ -1,6 +1,5 @@
 namespace Open.Identity.Domain.Entities;
 
-[Table(TableName.Permission)]
 public class Permission : EntityAuditBase
 {
     public string Code { get; set; }

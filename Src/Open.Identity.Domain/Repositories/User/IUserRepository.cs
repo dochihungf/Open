@@ -1,6 +1,6 @@
 namespace Open.Identity.Domain.Repositories;
 
-public class IUserRepository
+public interface IUserRepository
 {
     
 }
