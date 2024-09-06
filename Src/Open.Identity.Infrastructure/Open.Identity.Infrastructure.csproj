@@ -16,12 +16,14 @@
     </ItemGroup>
   
     <ItemGroup>
+      <ProjectReference Include="..\Open.Identity.Application\Open.Identity.Application.csproj" />
       <ProjectReference Include="..\Open.Identity.Domain\Open.Identity.Domain.csproj" />
       <ProjectReference Include="..\Open.SharedKernel\Open.SharedKernel.csproj" />
     </ItemGroup>
 
     <ItemGroup>
       <Folder Include="Repositories\User\" />
+      <Folder Include="Services\" />
     </ItemGroup>
 
 </Project>

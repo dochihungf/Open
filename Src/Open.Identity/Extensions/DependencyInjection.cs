@@ -1,6 +1,6 @@
 ﻿namespace Open.Identity.Extensions;
 
-public class DependencyInjection
+public static class DependencyInjection
 {
     
 }

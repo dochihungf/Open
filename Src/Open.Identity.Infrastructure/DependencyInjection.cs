@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Open.Core.GuardClauses;
 using Open.Core.Repositories.Dapper;
+using Open.Identity.Application.Interfaces;
 using Open.Identity.Infrastructure.Options;
 using Open.Identity.Infrastructure.Persistence;
 using Open.SharedKernel.Repositories.Dapper;
@@ -52,7 +53,7 @@ public static class DependencyInjection
 
     public static IServiceCollection AddIdentityDbContext<TContext>(this IServiceCollection services,
         Action<IdentityStoreOptions>? storeOptionsAction = null) 
-        where TContext : DbContext
+        where TContext : DbContext, IApplicationDbContext
     {
         var options = new IdentityStoreOptions();
         services.AddSingleton(options);

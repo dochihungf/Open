@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="Interfaces\Repositories\" />
+      <Folder Include="Interfaces\Services\" />
+      <Folder Include="Models\" />
+      <Folder Include="UseCases\Commands\" />
+      <Folder Include="UseCases\DomainEventHandlers\" />
+      <Folder Include="UseCases\IntegrationEvents\" />
+      <Folder Include="UseCases\Queries\" />
+      <Folder Include="UseCases\Validations\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Open.Constants\Open.Constants.csproj" />
+      <ProjectReference Include="..\Open.Identity.Domain\Open.Identity.Domain.csproj" />
+      <ProjectReference Include="..\Open.ServiceDefaults\Open.ServiceDefaults.csproj" />
+      <ProjectReference Include="..\Open.SharedKernel\Open.SharedKernel.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="Properties\Resources.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Properties\Resources.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Resources.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+</Project>

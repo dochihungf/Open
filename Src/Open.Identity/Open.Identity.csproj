@@ -7,39 +7,18 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="AutoMapper" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.7"/>
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
     </ItemGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\Open.Identity.Domain\Open.Identity.Domain.csproj" />
-      <ProjectReference Include="..\Open.Identity.Infrastructure\Open.Identity.Infrastructure.csproj" />
-    </ItemGroup>
-
+  
     <ItemGroup>
       <Folder Include="Apis\" />
-      <Folder Include="Application\Commands\" />
-      <Folder Include="Application\DomainEventHandlers\" />
-      <Folder Include="Application\IntegrationEvents\" />
-      <Folder Include="Application\Models\" />
-      <Folder Include="Application\Queries\" />
-      <Folder Include="Application\Validations\" />
     </ItemGroup>
 
     <ItemGroup>
-      <EmbeddedResource Update="Properties\Resources.resx">
-        <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      </EmbeddedResource>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Compile Update="Properties\Resources.Designer.cs">
-        <DesignTime>True</DesignTime>
-        <AutoGen>True</AutoGen>
-        <DependentUpon>Resources.resx</DependentUpon>
-      </Compile>
+      <ProjectReference Include="..\Open.Identity.Application\Open.Identity.Application.csproj" />
+      <ProjectReference Include="..\Open.Identity.Infrastructure\Open.Identity.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>
