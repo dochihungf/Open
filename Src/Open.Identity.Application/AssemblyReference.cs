@@ -1,6 +1,6 @@
 using System.Reflection;
 
-namespace Open.Identity;
+namespace Open.Identity.Application;
 
 public static class AssemblyReference
 {

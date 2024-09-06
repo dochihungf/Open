@@ -71,7 +71,7 @@ public static class DependencyInjection
             });
         }
         
-        services.AddScoped<TContext>();
+        services.AddScoped<IApplicationDbContext, TContext>();
 
         return services;
     }

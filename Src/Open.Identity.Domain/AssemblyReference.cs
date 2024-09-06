@@ -1,6 +1,8 @@
+using System.Reflection;
+
 namespace Open.Identity.Domain;
 
-public class AssemblyReference
+public static class AssemblyReference
 {
-    
+    public static readonly Assembly Assembly = typeof(AssemblyReference).Assembly;
 }

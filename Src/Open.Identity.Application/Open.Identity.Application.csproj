@@ -7,14 +7,14 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Interfaces\Repositories\" />
-      <Folder Include="Interfaces\Services\" />
-      <Folder Include="Models\" />
-      <Folder Include="UseCases\Commands\" />
-      <Folder Include="UseCases\DomainEventHandlers\" />
-      <Folder Include="UseCases\IntegrationEvents\" />
-      <Folder Include="UseCases\Queries\" />
-      <Folder Include="UseCases\Validations\" />
+      <Folder Include="Commands\User\DeleteMultiple\" />
+      <Folder Include="Commands\User\Delete\" />
+      <Folder Include="Commands\User\Update\" />
+      <Folder Include="DomainEventHandlers\" />
+      <Folder Include="IntegrationEvents\" />
+      <Folder Include="Interfaces\Services\Impls\" />
+      <Folder Include="Queries\" />
+      <Folder Include="Validations\" />
     </ItemGroup>
 
     <ItemGroup>
