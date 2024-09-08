@@ -20,5 +20,6 @@ public static class DependencyInjection
         services.AddExceptionHandler<ForbiddenExceptionHandler>();
         services.AddExceptionHandler<GlobalExceptionHandler>();
         services.AddProblemDetails();
+        return services;
     }
 }
