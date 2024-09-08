@@ -2,7 +2,10 @@ using FluentValidation;
 
 namespace Open.Identity.Application.Commands.User.Create;
 
-public class CreateUserValidator : IValidator<CreateUserCommand>
+public class CreateUserCommandValidator : AbstractValidator<CreateUserCommand>
 {
-    
+    public CreateUserCommandValidator()
+    {
+        
+    }
 }
