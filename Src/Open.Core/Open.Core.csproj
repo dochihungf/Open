@@ -22,6 +22,5 @@
     <ItemGroup>
       <ProjectReference Include="..\Open.Constants\Open.Constants.csproj" />
       <ProjectReference Include="..\Open.Security\Open.Security.csproj" />
-      <ProjectReference Include="..\Open.ServiceDefaults\Open.ServiceDefaults.csproj" />
     </ItemGroup>
 </Project>
