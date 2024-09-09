@@ -13,7 +13,9 @@
       <PackageReference Include="AutoMapper" />
       <PackageReference Include="Dapper" />
       <PackageReference Include="Microsoft.Extensions.Configuration.Binder" />
+      <PackageReference Include="Microsoft.Extensions.Telemetry.Abstractions" />
       <PackageReference Include="Newtonsoft.Json" />
+      <PackageReference Include="OpenTelemetry" />
       <PackageReference Include="Polly" />
       <PackageReference Include="StackExchange.Redis" />
 

@@ -5,7 +5,7 @@ using Open.Core.UnitOfWork;
 
 namespace Open.Core.EntityFrameworkCore;
 
-public class AppDbContext : DbContext, IAppDbContext
+public abstract class AppDbContext : DbContext, IAppDbContext
 {
     protected IDbContextTransaction? CurrentTransaction;
     
