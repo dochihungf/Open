@@ -4,7 +4,7 @@ using Microsoft.Extensions.Options;
 
 namespace Open.SharedKernel.Validator;
 
-public static class Extension
+public static class Extensions
 {
     public static OptionsBuilder<TOption> ValidateFluentValidation<TOption>(this OptionsBuilder<TOption> builder)
         where TOption : class

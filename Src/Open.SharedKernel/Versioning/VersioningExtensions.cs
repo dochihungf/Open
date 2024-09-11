@@ -3,7 +3,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace Open.SharedKernel.Versioning;
 
-public static class Extension
+public static class Extensions
 {
     public static IServiceCollection AddVersioning(this IServiceCollection services)
     {

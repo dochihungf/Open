@@ -1,58 +1,68 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-    </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
 
-   
 
-    <ItemGroup>
-      <PackageReference Include="AspNetCoreRateLimit" />
-      <PackageReference Include="AutoMapper" />
-      <PackageReference Include="Dapper" />
-      <PackageReference Include="Microsoft.Extensions.Configuration.Binder" />
-      <PackageReference Include="Microsoft.Extensions.Telemetry.Abstractions" />
-      <PackageReference Include="Newtonsoft.Json" />
-      <PackageReference Include="OpenTelemetry" />
-      <PackageReference Include="Polly" />
-      <PackageReference Include="StackExchange.Redis" />
+  <ItemGroup>
+    <PackageReference Include="AspNetCoreRateLimit"/>
+    <PackageReference Include="AutoMapper"/>
+    <PackageReference Include="Dapper"/>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder"/>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection"/>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions"/>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Scan"/>
+    <PackageReference Include="Microsoft.Extensions.Telemetry.Abstractions"/>
+    <PackageReference Include="Newtonsoft.Json"/>
+    <PackageReference Include="OpenTelemetry"/>
+    <PackageReference Include="Polly"/>
+    <PackageReference Include="StackExchange.Redis"/>
 
-      <!-- Authentication-->
-      <PackageReference Include="Microsoft.AspNetCore.Authentication.Certificate" Version="3.1.0" />
-      <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
-      <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.5.0" />
-      <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="8.0.0" />
-    </ItemGroup>
+    <PackageReference Include="Scrutor"/>
 
-  
-    <ItemGroup>
-      <ProjectReference Include="..\Open.Core\Open.Core.csproj" />
-      <ProjectReference Include="..\Open.Security\Open.Security.csproj" />
-    </ItemGroup>
+    <!-- Authentication-->
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Certificate" Version="3.1.0"/>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer"/>
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.5.0"/>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="8.0.0"/>
+  </ItemGroup>
 
-  
-    <ItemGroup>
-      <EmbeddedResource Update="Properties\Resources.resx">
-        <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
-      </EmbeddedResource>
-      <EmbeddedResource Update="Properties\Resources.en-us.resx">
-        <DependentUpon>Resources.resx</DependentUpon>
-      </EmbeddedResource>
-      <EmbeddedResource Update="Properties\Resources.vi-vn.resx">
-        <DependentUpon>Resources.resx</DependentUpon>
-      </EmbeddedResource>
-    </ItemGroup>
 
-  
-    <ItemGroup>
-      <Compile Update="Properties\Resources.Designer.cs">
-        <DesignTime>True</DesignTime>
-        <AutoGen>True</AutoGen>
-        <DependentUpon>Resources.resx</DependentUpon>
-      </Compile>
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Asp.Versioning.Mvc"/>
+    <PackageReference Include="Asp.Versioning.Http.Client"/>
+    <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Open.Core\Open.Core.csproj"/>
+    <ProjectReference Include="..\Open.Security\Open.Security.csproj"/>
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resources.en-us.resx">
+      <DependentUpon>Resources.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resources.vi-vn.resx">
+      <DependentUpon>Resources.resx</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
 
 </Project>
