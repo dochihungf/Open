@@ -4,7 +4,7 @@ using Open.Core.UnitOfWork;
 
 namespace Open.Core.Repositories.Dapper;
 
-public interface IWriteOnlyRepository<TEntity> where TEntity : IEntityAuditBase
+public interface IWriteOnlyRepository<TEntity> where TEntity : IEntityBase
 {
     IUnitOfWork UnitOfWork { get; }
 

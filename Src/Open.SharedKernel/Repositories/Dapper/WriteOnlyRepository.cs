@@ -20,7 +20,7 @@ using Open.SharedKernel.Properties;
 
 namespace Open.SharedKernel.Repositories.Dapper;
 
-public class WriteOnlyRepository<TEntity> : IWriteOnlyRepository<TEntity> where TEntity : IEntityAuditBase
+public class WriteOnlyRepository<TEntity> : IWriteOnlyRepository<TEntity> where TEntity : IEntityBase
 {
     protected IDbConnection _connection;
     protected readonly string _tableName;
@@ -78,8 +78,11 @@ public class WriteOnlyRepository<TEntity> : IWriteOnlyRepository<TEntity> where 
         // Map lại giá trị cũ vào entity
         if (updateFields != null)
         {
-            updateFields.Add("LastModifiedDate");
-            updateFields.Add("LastModifiedBy");
+            if (typeof(TEntity).HasInterface(typeof(IAuditable)))
+            {
+                updateFields.Add("LastModifiedDate");
+                updateFields.Add("LastModifiedBy");
+            }
             updateFields = updateFields.Distinct().ToList();
         }
         
@@ -233,13 +236,13 @@ public class WriteOnlyRepository<TEntity> : IWriteOnlyRepository<TEntity> where 
 
                 if (entity is IAuditable auditable)
                 {
-                    entity.CreatedBy = _currentUser.Context.OwnerId;
-                    entity.CreatedDate = DateHelper.Now;
-                    entity.LastModifiedDate = null;
-                    entity.LastModifiedBy = null;
-                    entity.DeletedDate = null;
-                    entity.DeletedBy = null;
-                    entity.IsDeleted = false;
+                    auditable.CreatedBy = _currentUser.Context.OwnerId;
+                    auditable.CreatedDate = DateHelper.Now;
+                    auditable.LastModifiedDate = null;
+                    auditable.LastModifiedBy = null;
+                    auditable.DeletedDate = null;
+                    auditable.DeletedBy = null;
+                    auditable.IsDeleted = false;
                 }
 
                 if (entity is IPersonalizeEntity personalize)
@@ -259,8 +262,8 @@ public class WriteOnlyRepository<TEntity> : IWriteOnlyRepository<TEntity> where 
     {
         if (entity is IAuditable auditable)
         {
-            entity.LastModifiedBy = _currentUser.Context.OwnerId;
-            entity.LastModifiedDate = DateHelper.Now;
+            auditable.LastModifiedBy = _currentUser.Context.OwnerId;
+            auditable.LastModifiedDate = DateHelper.Now;
         }
     }
 

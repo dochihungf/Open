@@ -18,7 +18,7 @@ using Open.SharedKernel.Properties;
 
 namespace Open.SharedKernel.Repositories.Dapper;
 
-public class ReadOnlyRepository<TEntity> : IReadOnlyRepository<TEntity> where TEntity : IEntityAuditBase
+public class ReadOnlyRepository<TEntity> : IReadOnlyRepository<TEntity> where TEntity : IEntityBase
 {
     protected IDbConnection _connection;
     protected readonly string _tableName;
@@ -77,10 +77,14 @@ public class ReadOnlyRepository<TEntity> : IReadOnlyRepository<TEntity> where TE
         {
             cmd += $" AND T.OwnerId = '{_currentUser.Context.OwnerId}'";
         }
-
-        cmd += " AND T.IsDeleted = 0";
-        cmd += " ORDER BY CASE WHEN T.LastModifiedDate > T.CreatedDate THEN T.LastModifiedDate ELSE T.CreatedDate END DESC";
-
+        
+        if (typeof(TEntity).HasInterface(typeof(IAuditable)))
+        {
+            cmd += " AND T.IsDeleted = 0";
+            cmd += " ORDER BY CASE WHEN T.LastModifiedDate > T.CreatedDate THEN T.LastModifiedDate ELSE T.CreatedDate END DESC";
+        }
+        
+        
         var result = await _connection.QueryAsync<TResult>(cmd);
         if (result.Any())
         {
@@ -103,8 +107,11 @@ public class ReadOnlyRepository<TEntity> : IReadOnlyRepository<TEntity> where TE
         {
             cmd += $" AND T.OwnerId = '{_currentUser.Context.OwnerId}'";
         }
-
-        cmd += " AND T.IsDeleted = 0";
+        
+        if (typeof(TEntity).HasInterface(typeof(IAuditable)))
+        {
+            cmd += " AND T.IsDeleted = 0";
+        }
 
         var result = await _connection.QuerySingleOrDefaultAsync<TResult>(cmd, new { Id = id });
         if (result != null)
@@ -179,8 +186,11 @@ public class ReadOnlyRepository<TEntity> : IReadOnlyRepository<TEntity> where TE
         }
         else
         {
-            cmd +=
-                $" ORDER BY CASE WHEN T.LastModifiedDate > T.CreatedDate THEN T.LastModifiedDate ELSE T.CreatedDate END DESC {limit}";
+            if (typeof(TEntity).HasInterface(typeof(IAuditable)))
+            {
+                cmd += $" ORDER BY CASE WHEN T.LastModifiedDate > T.CreatedDate THEN T.LastModifiedDate ELSE T.CreatedDate END DESC ";
+            }
+            cmd += $" {limit}";
         }
 
         var dataTask = _connection.QueryAsync<TResult>(cmd, param);
