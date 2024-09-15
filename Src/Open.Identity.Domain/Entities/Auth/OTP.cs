@@ -2,7 +2,7 @@ using Open.Identity.Domain.Enums;
 
 namespace Open.Identity.Domain.Entities;
 
-public class OTP : PersonalizedEntityBase
+public class OTP : PersonalizedEntityAuditBase
 {
     public string Code { get; set; }
 

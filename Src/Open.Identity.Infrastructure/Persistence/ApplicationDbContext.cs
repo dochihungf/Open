@@ -7,17 +7,13 @@ using Open.Identity.Infrastructure.Options;
 
 namespace Open.Identity.Infrastructure.Persistence;
 
-public class ApplicationDbContext : AppDbContext, IApplicationDbContext
+public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, IdentityStoreOptions storeOptions) : AppDbContext(options), IApplicationDbContext
 {
-    private readonly IdentityStoreOptions _storeOptions;
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, IdentityStoreOptions storeOptions) : base(options)
-    {
-        _storeOptions = storeOptions ?? throw new ArgumentNullException(nameof(storeOptions));
-    }
+    private readonly IdentityStoreOptions _storeOptions = storeOptions ?? throw new ArgumentNullException(nameof(storeOptions));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ConfigureIdentityContext(_storeOptions);
+        modelBuilder.ModelBuilderIdentityContext(_storeOptions);
         
         base.OnModelCreating(modelBuilder);
     }

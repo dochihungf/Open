@@ -29,7 +29,7 @@ public static class ModelBuilderExtensions
         return builder;
     }
     
-    public static void ConfigureIdentityContext(this ModelBuilder builder, IdentityStoreOptions storeOptions)
+    public static void ModelBuilderIdentityContext(this ModelBuilder builder, IdentityStoreOptions storeOptions)
     {
         if (!string.IsNullOrWhiteSpace(storeOptions.DefaultSchema))
         {
@@ -180,7 +180,7 @@ public static class ModelBuilderExtensions
             OTP.HasKey(e => e.Id);
             OTP.Property(e => e.Code).HasMaxLength(DataSchemaLength.Medium).IsUnicode(false);
             OTP.Property(e => e.Type).HasConversion(v => v.ToString(), v => (OTPType)Enum.Parse(typeof(OTPType), v));
-            OTP.ApplyEntityConfiguration();
+            OTP.ApplyEntityAuditConfiguration();
             
             OTP.HasIndex(e => e.OwnerId);
             OTP.HasIndex(e => e.Code);
@@ -195,7 +195,7 @@ public static class ModelBuilderExtensions
             
             MFA.HasKey(e => e.Id);
             MFA.Property(e => e.Type).HasConversion(v => v.ToString(), v => (MFAType)Enum.Parse(typeof(MFAType), v));
-            MFA.ApplyEntityConfiguration();
+            MFA.ApplyEntityAuditConfiguration();
 
             MFA.HasIndex(e => e.OwnerId);
         });
