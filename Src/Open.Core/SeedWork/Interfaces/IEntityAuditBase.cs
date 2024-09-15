@@ -5,7 +5,7 @@ public interface IEntityAuditBase<TKey> :  IAuditable, IEntityBase<TKey>
 
 }
 
-public interface IEntityAuditBase : IEntityAuditBase<Guid>
+public interface IEntityAuditBase : IEntityAuditBase<Guid>, IEntityBase
 {
     
 }

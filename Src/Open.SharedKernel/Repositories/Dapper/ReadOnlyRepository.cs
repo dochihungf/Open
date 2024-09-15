@@ -79,8 +79,7 @@ public class ReadOnlyRepository<TEntity> : IReadOnlyRepository<TEntity> where TE
         }
 
         cmd += " AND T.IsDeleted = 0";
-        cmd +=
-            " ORDER BY CASE WHEN T.LastModifiedDate > T.CreatedDate THEN T.LastModifiedDate ELSE T.CreatedDate END DESC";
+        cmd += " ORDER BY CASE WHEN T.LastModifiedDate > T.CreatedDate THEN T.LastModifiedDate ELSE T.CreatedDate END DESC";
 
         var result = await _connection.QueryAsync<TResult>(cmd);
         if (result.Any())

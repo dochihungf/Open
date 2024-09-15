@@ -24,6 +24,6 @@ public abstract class EntityAuditBase<TKey> : EntityBase<TKey>, IEntityAuditBase
 /// <summary>
 /// By default, TKey is Guid
 /// </summary>
-public class EntityAuditBase : EntityAuditBase<Guid>, IEntityAuditBase
+public class EntityAuditBase : EntityAuditBase<Guid>, IEntityBase
 {
 }
