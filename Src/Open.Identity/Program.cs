@@ -1,15 +1,20 @@
+using Open.Identity.Apis;
 using Open.Identity.Infrastructure;
+using Open.ServiceDefaults;
 using Open.SharedKernel.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
 
 CoreSettings.SetConnectionStrings(builder.Configuration);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.AddServiceDefaults();
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddInfrastructure(builder.Configuration);
+
+var withApiVersioning = builder.Services.AddApiVersioning();
+withApiVersioning.AddApiExplorer(options => options.GroupNameFormat = "'v'VVV");
 
 var app = builder.Build();
 
@@ -22,29 +27,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+var users = app.NewVersionedApi("Users");
 
-app.MapGet("/weatherforecast", () =>
-    {
-        var forecast = Enumerable.Range(1, 5).Select(index =>
-                new WeatherForecast
-                (
-                    DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                    Random.Shared.Next(-20, 55),
-                    summaries[Random.Shared.Next(summaries.Length)]
-                ))
-            .ToArray();
-        return forecast;
-    })
-    .WithName("GetWeatherForecast")
-    .WithOpenApi();
+users.MapUsersApiVersionOne();
 
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}

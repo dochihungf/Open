@@ -71,7 +71,7 @@ public static class ModelBuilderExtensions
         {
             userConfig.ToTable(storeOptions.UserConfig);
             
-            userConfig.ApplyEntityConfiguration();
+            userConfig.ApplyEntityAuditConfiguration();
             
             userConfig.HasIndex(r => r.OwnerId);
         });

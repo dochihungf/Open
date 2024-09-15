@@ -15,11 +15,11 @@ public static class Extensions
 
         services.AddDefaultLocalization();
         
-        services.AddDefaultRateLimiting();
+        // services.AddDefaultRateLimiting();
 
         services.AddDefaultExceptionHandlers();
         
-        builder.ConfigureOpenTelemetry();
+        // builder.ConfigureOpenTelemetry();
 
         builder.AddDefaultHealthChecks();
         
@@ -33,7 +33,7 @@ public static class Extensions
         
         services.Configure<JsonOptions>(options =>
         {
-            options.SerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+            // options.SerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
             // options.SerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
             options.SerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
             options.SerializerOptions.MaxDepth = 100;
