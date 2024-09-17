@@ -18,7 +18,6 @@
     <ItemGroup>
       <Folder Include="Domain\UserAggregate\Events\" />
       <Folder Include="Domain\UserAggregate\Specifications\" />
-      <Folder Include="Extensions\" />
       <Folder Include="Features\Users\" />
       <Folder Include="Grpc\" />
       <Folder Include="Infrastructure\Master\Configurations\" />

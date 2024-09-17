@@ -1,4 +1,5 @@
 using Open.Core.SeedWork;
+using Open.Core.SeedWork.Events;
 using Open.User.Domain.Enums;
 
 namespace Open.User.Domain.UserAggregate;
@@ -29,7 +30,6 @@ public class User : EntityAuditBase
     
     public GenderType Gender { get; set; }
     
-
     #region Navigations
     
     public virtual UserAvatar Avatar { get; set; }
