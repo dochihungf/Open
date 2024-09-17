@@ -2,9 +2,10 @@ using Open.Core.SeedWork;
 
 namespace Open.User.Domain.UserAggregate;
 
-public class UserConfig : PersonalizedEntityAuditBase
+public class UserAvatar : PersonalizedEntityAuditBase
 {
-    public string Json { get; set; }
+    public string FileName { get; set; }
+    public string Url { get; set; }
     
     #region Navigations
     

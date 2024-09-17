@@ -11,4 +11,36 @@
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Open.Core\Open.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Domain\UserAggregate\Events\" />
+      <Folder Include="Domain\UserAggregate\Specifications\" />
+      <Folder Include="Extensions\" />
+      <Folder Include="Features\Users\" />
+      <Folder Include="Grpc\" />
+      <Folder Include="Infrastructure\Master\Configurations\" />
+      <Folder Include="Infrastructure\Redis\" />
+      <Folder Include="IntegrationEvents\" />
+      <Folder Include="Protos\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="Properties\Resources.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Properties\Resources.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Resources.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+  
+
 </Project>

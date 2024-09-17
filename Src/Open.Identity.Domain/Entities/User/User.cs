@@ -40,5 +40,4 @@ public class User : EntityAuditBase
     public ICollection<SignInHistory> SignInHistories { get; set; }
     
     #endregion
-    
 }
