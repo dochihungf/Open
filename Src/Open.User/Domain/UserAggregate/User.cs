@@ -1,10 +1,11 @@
 using Open.Core.SeedWork;
 using Open.Core.SeedWork.Events;
+using Open.Core.SeedWork.Interfaces;
 using Open.User.Domain.Enums;
 
 namespace Open.User.Domain.UserAggregate;
 
-public class User : EntityAuditBase
+public class User : EntityAuditBase, IAggregateRoot
 {
     public string Username { get; set; }
     
