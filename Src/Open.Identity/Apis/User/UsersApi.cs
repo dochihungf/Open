@@ -1,7 +1,6 @@
+using Asp.Versioning;
 using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
 using Open.Core.Results;
-using Open.Identity.Apis.User;
 
 namespace Open.Identity.Apis;
 
@@ -9,7 +8,7 @@ public static class UsersApi
 {
     public static RouteGroupBuilder MapUsersApiVersionOne(this IEndpointRouteBuilder app)
     {
-        var api = app.MapGroup("api/users");
+        var api = app.MapGroup("api/identity/users").HasApiVersion(1.0);
 
         api.MapGet("/", GetAllUserAsync);
         api.MapGet("/{id:guid}", () => { });
@@ -20,7 +19,7 @@ public static class UsersApi
         return api;
     }
 
-    public static async Task<Results<Ok<Result<List<string>>>, ProblemHttpResult>> GetAllUserAsync()
+    private static async Task<Results<Ok<Result<List<string>>>, ProblemHttpResult>> GetAllUserAsync()
     {
         var users = new List<string>()
         {

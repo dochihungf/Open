@@ -57,23 +57,11 @@ public static class ModelBuilderExtensions
 
             // Index Clustered 
             user.HasIndex(u => u.Username).IsClustered();
-            
-            user.HasOne(u => u.UserConfig).WithOne(uc => uc.User).HasForeignKey<UserConfig>(u => u.OwnerId).IsRequired().OnDelete(DeleteBehavior.Cascade);
             user.HasOne(u => u.SecretKey).WithOne(uc => uc.User).HasForeignKey<SecretKey>(u => u.OwnerId).IsRequired().OnDelete(DeleteBehavior.Cascade);
             user.HasOne(u => u.MFA).WithOne(uc => uc.User).HasForeignKey<MFA>(u => u.OwnerId).IsRequired().OnDelete(DeleteBehavior.Cascade);
             user.HasMany(u => u.OTPs).WithOne(uc => uc.User).HasForeignKey(u => u.OwnerId).IsRequired().OnDelete(DeleteBehavior.Cascade);
             user.HasMany(u => u.SignInHistories).WithOne(ur => ur.User).HasForeignKey(ur => ur.UserId).IsRequired().OnDelete(DeleteBehavior.Cascade);
             user.HasMany(u => u.RefreshTokens).WithOne(ur => ur.User).HasForeignKey(ur => ur.OwnerId).IsRequired().OnDelete(DeleteBehavior.Cascade);
-        });
-        
-        // UserConfig builder
-        builder.Entity<UserConfig>(userConfig =>
-        {
-            userConfig.ToTable(storeOptions.UserConfig);
-            
-            userConfig.ApplyEntityAuditConfiguration();
-            
-            userConfig.HasIndex(r => r.OwnerId);
         });
         
         // Role builder

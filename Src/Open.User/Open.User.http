@@ -1,0 +1,6 @@
+@Open.User_HostAddress = http://localhost:5033
+
+GET {{Open.User_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -27,8 +27,6 @@ public class IdentityStoreOptions
     public string DefaultSchema { get; set; } = null;
     
     public TableConfiguration User { get; set; } = new TableConfiguration("user");
-
-    public TableConfiguration UserConfig { get; set; } = new TableConfiguration("use_config");
     
     public TableConfiguration Role { get; set; } = new TableConfiguration("role");
     

@@ -30,8 +30,6 @@ public class User : EntityAuditBase
     public AuthenticatorType AuthenticatorType { get; set; }
 
     #region Navigations
-    
-    public virtual UserConfig UserConfig { get; set; }
     public virtual SecretKey SecretKey { get; set; }
     public virtual MFA MFA { get; set; }
     

@@ -7,7 +7,6 @@ namespace Open.Identity.Application.Interfaces;
 public interface IApplicationDbContext : IAppDbContext
 {
     DbSet<User> Users { get; set; }
-    DbSet<UserConfig> UserConfigs { get; set; }
     DbSet<RefreshToken> RefreshTokens { get; set; }
     DbSet<Role> Roles { get; set; }
     DbSet<UserRole> UserRoles { get; set; }
