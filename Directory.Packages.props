@@ -113,13 +113,16 @@
     <!-- MassTransit -->
     <PackageVersion Include="MassTransit" Version="$(MassTransitVersion)" />
     <PackageVersion Include="MassTransit.RabbitMQ" Version="$(MassTransitVersion)" />
+    <PackageVersion Include="MassTransit.MongoDb" Version="$(MassTransitVersion)" />
     <PackageVersion Include="MassTransit.EntityFrameworkCore" Version="$(MassTransitVersion)" />
     <!-- Miscellaneous -->
     <PackageVersion Include="Scrutor" Version="4.2.2" />
-    <PackageVersion Include="MediatR" Version="12.4.0" />
-    <PackageVersion Include="Marten.AspNetCore" Version="7.26.2" />
+    <PackageVersion Include="MediatR" Version="12.4.1" />
+    <PackageVersion Include="MongoDB.Bson" Version="2.28.0" />
+    <PackageVersion Include="Marten.AspNetCore" Version="7.27.0" />
     <PackageVersion Include="FluentEmail.Mailtrap" Version="2.7.0" />
-    <PackageVersion Include="Swashbuckle.AspNetCore" Version="6.7.1" />
+    <PackageVersion Include="Swashbuckle.AspNetCore" Version="6.7.3" />
+    <PackageVersion Include="Swashbuckle.AspNetCore.ReDoc" Version="6.7.3" />
     <PackageVersion Include="FluentValidation.AspNetCore" Version="11.3.0" />
     <PackageVersion Include="Microsoft.Web.LibraryManager.Build" Version="2.1.175" />
     <PackageVersion Include="MicroElements.Swashbuckle.FluentValidation" Version="6.0.0" />

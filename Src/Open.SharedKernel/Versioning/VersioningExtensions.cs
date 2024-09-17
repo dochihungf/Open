@@ -6,20 +6,19 @@ namespace Open.SharedKernel.Versioning;
 
 public static class Extensions
 {
-    public static IServiceCollection AddVersioning(this IServiceCollection services)
+    public static IApiVersioningBuilder? AddVersioning(this IServiceCollection services)
     {
-        services.AddApiVersioning(options =>
+        return services.AddApiVersioning(options =>
             {
-                options.DefaultApiVersion = new(1, 0);
+                options.AssumeDefaultVersionWhenUnspecified = true;
+                options.DefaultApiVersion = new ApiVersion(1, 0);
                 options.ApiVersionReader = new UrlSegmentApiVersionReader();
             })
             .AddApiExplorer(options =>
             {
-                options.GroupNameFormat = "'v'V";
+                options.GroupNameFormat = "'v'VVV";
                 options.SubstituteApiVersionInUrl = true;
             });
-
-        return services;
     }
     
 }

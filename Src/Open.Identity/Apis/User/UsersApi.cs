@@ -10,16 +10,12 @@ public static class UsersApi
     {
         var api = app.MapGroup("api/identity/users").HasApiVersion(1.0);
 
-        api.MapGet("/", GetAllUserAsync);
-        api.MapGet("/{id:guid}", () => { });
-        api.MapPost("/", () => { });
-        api.MapPut("/{id:guid}", () => { });
-        api.MapDelete("/{id:guid}", () => { });
+        app.MapGet("/", GetAllUserAsync);
 
         return api;
     }
 
-    private static async Task<Results<Ok<Result<List<string>>>, ProblemHttpResult>> GetAllUserAsync()
+    public static async Task<Results<Ok<Result<List<string>>>, ProblemHttpResult>> GetAllUserAsync()
     {
         var users = new List<string>()
         {

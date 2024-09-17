@@ -9,10 +9,6 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.7"/>
     </ItemGroup>
-  
-    <ItemGroup>
-      <Folder Include="Apis\" />
-    </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Open.Identity.Application\Open.Identity.Application.csproj" />
