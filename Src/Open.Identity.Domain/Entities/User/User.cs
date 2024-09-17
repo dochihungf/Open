@@ -1,9 +1,10 @@
 using Open.Identity.Domain.Enums;
+using Open.Identity.Domain.SeedWork;
 using Open.Security.Enums;
 
 namespace Open.Identity.Domain.Entities;
 
-public class User : EntityAuditBase
+public class User : EntityBase
 {
     public string Username { get; set; }
     
@@ -28,6 +29,11 @@ public class User : EntityAuditBase
     public GenderType Gender { get; set; }
     
     public AuthenticatorType AuthenticatorType { get; set; }
+    
+    public DateTime? DeletedDate { get; set; }
+    
+    public Guid? DeletedBy { get; set; }
+    public bool IsDeleted { get; set; }
 
     #region Navigations
     public virtual SecretKey SecretKey { get; set; }
@@ -40,4 +46,5 @@ public class User : EntityAuditBase
     public ICollection<SignInHistory> SignInHistories { get; set; }
     
     #endregion
+    
 }

@@ -1,6 +1,6 @@
 ﻿namespace Open.Identity.Domain.Entities;
 
-public class SignInHistory : EntityBase
+public class SignInHistory : Entity
 {
     public string Username { get; set; }
 

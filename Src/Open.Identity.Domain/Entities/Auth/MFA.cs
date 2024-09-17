@@ -1,12 +1,12 @@
-using Open.Identity.Domain.Enums;
-
 namespace Open.Identity.Domain.Entities;
 
-public class MFA : PersonalizedEntityAuditBase
+public class MFA : EntityBase, IPersonalizeEntity
 {
     public MFAType Type { get; set; } = MFAType.None;
 
     public bool Enabled { get; set; }
+    
+    public Guid OwnerId { get; set; }
     
     #region Navigations
     

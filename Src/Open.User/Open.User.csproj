@@ -20,7 +20,6 @@
       <Folder Include="Domain\UserAggregate\Specifications\" />
       <Folder Include="Features\Users\" />
       <Folder Include="Grpc\" />
-      <Folder Include="Infrastructure\Master\Configurations\" />
       <Folder Include="Infrastructure\Redis\" />
       <Folder Include="IntegrationEvents\" />
       <Folder Include="Protos\" />

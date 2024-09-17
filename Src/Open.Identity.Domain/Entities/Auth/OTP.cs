@@ -1,8 +1,6 @@
-using Open.Identity.Domain.Enums;
-
 namespace Open.Identity.Domain.Entities;
 
-public class OTP : PersonalizedEntityAuditBase
+public class OTP : EntityBase, IPersonalizeEntity
 {
     public string Code { get; set; }
 
@@ -14,9 +12,12 @@ public class OTP : PersonalizedEntityAuditBase
     
     public OTPType Type { get; set; } = OTPType.None;
     
+    public Guid OwnerId { get; set; }
+    
     #region Navigations
     
     public virtual User User { get; set; }
     
     #endregion
+    
 }

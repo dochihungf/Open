@@ -1,6 +1,6 @@
 namespace Open.Identity.Domain.Entities;
 
-public class Permission : EntityAuditBase
+public class Permission : EntityBase
 {
     public string Code { get; set; }
 
@@ -16,5 +16,5 @@ public class Permission : EntityAuditBase
     public ICollection<UserPermission> UserPermissions { get; set; }
     
     #endregion
-    
+
 }

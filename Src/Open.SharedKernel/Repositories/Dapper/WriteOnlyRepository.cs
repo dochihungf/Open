@@ -20,7 +20,7 @@ using Open.SharedKernel.Properties;
 
 namespace Open.SharedKernel.Repositories.Dapper;
 
-public class WriteOnlyRepository<TEntity> : IWriteOnlyRepository<TEntity> where TEntity : IEntityBase
+public class WriteOnlyRepository<TEntity> : IWriteOnlyRepository<TEntity> where TEntity : IEntity
 {
     protected IDbConnection _connection;
     protected readonly string _tableName;

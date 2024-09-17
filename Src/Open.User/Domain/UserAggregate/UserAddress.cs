@@ -1,8 +1,10 @@
 using Open.Core.SeedWork;
+using Open.Core.SeedWork.Interfaces;
+using Open.User.Domain.SeedWork;
 
 namespace Open.User.Domain.UserAggregate;
 
-public class UserAddress : PersonalizedEntityAuditBase
+public class UserAddress : EntityBase, IPersonalizeEntity
 {
     public string Street { get; set; } // Địa chỉ đường phố
     
@@ -18,9 +20,12 @@ public class UserAddress : PersonalizedEntityAuditBase
     
     public bool IsPrimary { get; set; } // Địa chỉ chính
     
+    public Guid OwnerId { get; set; }
+    
     #region Navigations
     
     public virtual User User { get; set; }
     
     #endregion
+    
 }

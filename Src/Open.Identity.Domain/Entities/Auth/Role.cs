@@ -1,6 +1,6 @@
 namespace Open.Identity.Domain.Entities;
 
-public class Role : EntityAuditBase
+public class Role : EntityBase
 {
     public string Code { get; set; }
 
@@ -13,4 +13,5 @@ public class Role : EntityAuditBase
     public ICollection<RolePermission> RolePermissions { get; set; }
     
     #endregion
+
 }

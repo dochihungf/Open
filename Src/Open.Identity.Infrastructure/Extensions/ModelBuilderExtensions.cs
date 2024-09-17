@@ -1,6 +1,7 @@
 using Open.Core.SeedWork.Interfaces;
 using Open.Identity.Domain.Entities;
 using Open.Identity.Domain.Enums;
+using Open.Identity.Domain.SeedWork;
 using Open.Identity.Infrastructure.Options;
 
 namespace Open.Identity.Infrastructure.Extensions;
@@ -12,7 +13,7 @@ public static class ModelBuilderExtensions
         return string.IsNullOrWhiteSpace(configuration.Schema) ? entityTypeBuilder.ToTable(configuration.Name) : entityTypeBuilder.ToTable(configuration.Name, configuration.Schema);
     }
     
-    private static EntityTypeBuilder<TEntity> ApplyEntityAuditConfiguration<TEntity>(this EntityTypeBuilder<TEntity> builder) where TEntity : EntityAuditBase
+    private static EntityTypeBuilder<TEntity> ApplyEntityAuditConfiguration<TEntity>(this EntityTypeBuilder<TEntity> builder) where TEntity : EntityBase
     {
         builder.Property(e => e.CreatedBy).HasMaxLength(DataSchemaLength.ExtraLarge);
         builder.Property(e => e.LastModifiedBy).HasMaxLength(DataSchemaLength.ExtraLarge).IsRequired(false);
@@ -24,7 +25,7 @@ public static class ModelBuilderExtensions
         return builder;
     }
     
-    private static EntityTypeBuilder<TEntity> ApplyEntityConfiguration<TEntity>(this EntityTypeBuilder<TEntity> builder) where TEntity : EntityBase
+    private static EntityTypeBuilder<TEntity> ApplyEntityConfiguration<TEntity>(this EntityTypeBuilder<TEntity> builder) where TEntity : Entity
     {
         return builder;
     }
@@ -57,6 +58,7 @@ public static class ModelBuilderExtensions
 
             // Index Clustered 
             user.HasIndex(u => u.Username).IsClustered();
+            
             user.HasOne(u => u.SecretKey).WithOne(uc => uc.User).HasForeignKey<SecretKey>(u => u.OwnerId).IsRequired().OnDelete(DeleteBehavior.Cascade);
             user.HasOne(u => u.MFA).WithOne(uc => uc.User).HasForeignKey<MFA>(u => u.OwnerId).IsRequired().OnDelete(DeleteBehavior.Cascade);
             user.HasMany(u => u.OTPs).WithOne(uc => uc.User).HasForeignKey(u => u.OwnerId).IsRequired().OnDelete(DeleteBehavior.Cascade);

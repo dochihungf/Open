@@ -1,12 +1,15 @@
 namespace Open.Identity.Domain.Entities;
 
-public class SecretKey : PersonalizedEntityAuditBase
+public class SecretKey : EntityBase, IPersonalizeEntity
 {
     public string Key { get; set; }
+    
+    public Guid OwnerId { get; set; }
     
     #region Navigations
     
     public virtual User User { get; set; }
     
     #endregion
+
 }
