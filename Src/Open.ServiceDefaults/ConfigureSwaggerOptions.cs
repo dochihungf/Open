@@ -1,14 +1,3 @@
-using System.Text;
-using Asp.Versioning.ApiExplorer;
-using Dapper;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.Extensions.Options;
-using Microsoft.Extensions.Primitives;
-using Microsoft.OpenApi.Any;
-using Microsoft.OpenApi.Models;
-using MongoDB.Bson;
-using Swashbuckle.AspNetCore.SwaggerGen;
-
 namespace Open.ServiceDefaults;
 
 public sealed class ConfigureSwaggerGenOptions(IApiVersionDescriptionProvider provider, IConfiguration config)

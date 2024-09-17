@@ -1,8 +1,3 @@
-using Asp.Versioning;
-using MicroElements.Swashbuckle.FluentValidation.AspNetCore;
-using Microsoft.Extensions.Options;
-using Swashbuckle.AspNetCore.SwaggerGen;
-
 namespace Open.ServiceDefaults;
 
 public static class OpenApiExtension
