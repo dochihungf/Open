@@ -38,7 +38,7 @@ public class WriteOnlyRepository<TEntity> : IWriteOnlyRepository<TEntity> where 
         _currentUser = currentUser;
         _sequenceCaching = sequenceCaching;
         _tableName = ((TEntity)Activator.CreateInstance(typeof(TEntity))!).GetTableName();
-        _isSystemTable = typeof(TEntity).GetProperty("OwnerId") == null;
+        _isSystemTable = !typeof(TEntity).HasInterface(typeof(IPersonalizeEntity));
         _localizer = localizer;
     }
     
@@ -67,10 +67,13 @@ public class WriteOnlyRepository<TEntity> : IWriteOnlyRepository<TEntity> where 
         var columnParams = new List<string>();
         var ignoreFields = new string[]
         {
-            nameof(EntityAuditBase.Id),
-            nameof(EntityAuditBase.CreatedDate),
-            nameof(EntityAuditBase.CreatedBy),
-            nameof(EntityAuditBase.IsDeleted),
+            nameof(Entity.Id),
+            nameof(Entity.CreatedDate),
+            nameof(IUserTracking.CreatedBy),
+            nameof(ISoftDelete.IsDeleted),
+            nameof(ISoftDelete.DeletedBy),
+            nameof(ISoftDelete.DeletedDate),
+
         };
         
         var properties = entity.GetPropertyInfos();
@@ -78,11 +81,16 @@ public class WriteOnlyRepository<TEntity> : IWriteOnlyRepository<TEntity> where 
         // Map lại giá trị cũ vào entity
         if (updateFields != null)
         {
-            if (typeof(TEntity).HasInterface(typeof(IAuditable)))
+            if (typeof(TEntity).HasInterface(typeof(ISoftDelete)))
             {
                 updateFields.Add("LastModifiedDate");
+            }
+            
+            if (typeof(TEntity).HasInterface(typeof(IUserTracking)))
+            {
                 updateFields.Add("LastModifiedBy");
             }
+            
             updateFields = updateFields.Distinct().ToList();
         }
         
@@ -100,12 +108,18 @@ public class WriteOnlyRepository<TEntity> : IWriteOnlyRepository<TEntity> where 
         
         BeforeUpdate(entity);
         
-        sqlCommand += string.Join(", ", columnParams) + " WHERE T.Id = @Id AND T.IsDeleted = 0";
-        if (typeof(TEntity).GetProperty("OwnerId") != null)
+        sqlCommand += string.Join(", ", columnParams) + " WHERE T.Id = @Id ";
+        if (typeof(TEntity).HasInterface(typeof(ISoftDelete)))
+        {
+            sqlCommand = sqlCommand + " AND T.IsDeleted = 0";
+        }
+        
+        if (typeof(TEntity).HasInterface(typeof(IPersonalizeEntity)))
         {
             sqlCommand += $" AND IF(OwnerId = '{_currentUser.Context.OwnerId}', TRUE, IF(CreatedBy = '{_currentUser.Context.OwnerId}', TRUE, FALSE));";
         }
-        else if (typeof(TEntity).HasInterface(typeof(IAuditable)))
+        
+        if (typeof(TEntity).HasInterface(typeof(IUserTracking)))
         {
             sqlCommand += $" AND IF(CreatedBy = '{_currentUser.Context.OwnerId}', TRUE, FALSE);";
         }
@@ -126,15 +140,34 @@ public class WriteOnlyRepository<TEntity> : IWriteOnlyRepository<TEntity> where 
             throw new SqlInjectionException();
         }
         
-        var sqlCommand = $"SELECT * FROM {_tableName} AS T WHERE T.Id In ( {joinedIds}) AND T.IsDeleted = 0";
-        var deleteCommand = $"UPDATE {_tableName} AS T SET T.IsDeleted = 1, T.DeletedDate = @DeletedDate, T.DeletedBy = @DeletedBy WHERE T.Id IN( {joinedIds} )";
+        string sqlCommand, deleteCommand = $"";
+        object deletionParams = default!;
         
-        if (typeof(TEntity).GetProperty("OwnerId") != null)
+        if (typeof(TEntity).HasInterface(typeof(ISoftDelete)))
+        {
+            sqlCommand = $"SELECT * FROM {_tableName} AS T WHERE T.Id In ( {joinedIds}) AND T.IsDeleted = 0";
+            deleteCommand = $"UPDATE {_tableName} AS T SET T.IsDeleted = 1, T.DeletedDate = @DeletedDate, T.DeletedBy = @DeletedBy WHERE T.Id IN( {joinedIds} )";
+            
+            deletionParams = new
+            {
+                DeletedDate = DateHelper.Now,
+                DeletedBy = _currentUser.Context.OwnerId,
+                IsDeleted = 1,
+            };
+        }
+        else
+        {
+            sqlCommand = $"SELECT * FROM {_tableName} AS T WHERE T.Id In ( {joinedIds})";
+            deleteCommand = $"DELETE FROM {_tableName} WHERE T.Id IN ( {joinedIds} )";
+        }
+        
+        
+        if (typeof(TEntity).HasInterface(typeof(IPersonalizeEntity)))
         {
             sqlCommand += $" AND IF(OwnerId = '{_currentUser.Context.OwnerId}', TRUE, IF(CreatedBy = '{_currentUser.Context.OwnerId}', TRUE, FALSE));";
             deleteCommand += $" AND IF(OwnerId = '{_currentUser.Context.OwnerId}', TRUE, IF(CreatedBy = '{_currentUser.Context.OwnerId}', TRUE, FALSE));";
         }
-        else if (typeof(TEntity).HasInterface(typeof(IAuditable)))
+        else if (typeof(TEntity).HasInterface(typeof(IUserTracking)))
         {
             sqlCommand += $" AND IF(CreatedBy = '{_currentUser.Context.OwnerId}', TRUE, FALSE);";
             deleteCommand += $" AND IF(CreatedBy = '{_currentUser.Context.OwnerId}', TRUE, FALSE);";
@@ -149,13 +182,7 @@ public class WriteOnlyRepository<TEntity> : IWriteOnlyRepository<TEntity> where 
         
         BeforeDelete(entities);
         
-        var param = new EntityAuditBase()
-        {
-            DeletedDate = DateHelper.Now,
-            DeletedBy = _currentUser.Context.OwnerId,
-        };
-        
-        await _connection.ExecuteAsync(deleteCommand, param, cancellationToken: cancellationToken);
+        await _connection.ExecuteAsync(deleteCommand, deletionParams, cancellationToken: cancellationToken);
         
         await ClearCacheWhenChangesAsync(entities.Select(x => (object)x.Id).ToList(), cancellationToken);
         
@@ -234,17 +261,25 @@ public class WriteOnlyRepository<TEntity> : IWriteOnlyRepository<TEntity> where 
             {
                 entity.Id = Guid.NewGuid();
 
-                if (entity is IAuditable auditable)
+                if (entity is IUserTracking userTracking)
                 {
-                    auditable.CreatedBy = _currentUser.Context.OwnerId;
-                    auditable.CreatedDate = DateHelper.Now;
-                    auditable.LastModifiedDate = null;
-                    auditable.LastModifiedBy = null;
-                    auditable.DeletedDate = null;
-                    auditable.DeletedBy = null;
-                    auditable.IsDeleted = false;
+                    userTracking.CreatedBy = _currentUser.Context.OwnerId;
+                    userTracking.LastModifiedBy = null;
                 }
 
+                if (entity is IDateTracking dateTracking)
+                {
+                    dateTracking.CreatedDate = DateHelper.Now;
+                    dateTracking.LastModifiedDate = null;
+                }
+                
+                if (entity is ISoftDelete softDelete)
+                {
+                    softDelete.DeletedDate = null;
+                    softDelete.DeletedBy = null;
+                    softDelete.IsDeleted = false;
+                }
+                
                 if (entity is IPersonalizeEntity personalize)
                 {
                     personalize.OwnerId = _currentUser.Context.OwnerId;
@@ -260,10 +295,14 @@ public class WriteOnlyRepository<TEntity> : IWriteOnlyRepository<TEntity> where 
     
     protected virtual void BeforeUpdate(TEntity entity)
     {
-        if (entity is IAuditable auditable)
+        if (entity is IUserTracking userTracking)
         {
-            auditable.LastModifiedBy = _currentUser.Context.OwnerId;
-            auditable.LastModifiedDate = DateHelper.Now;
+            userTracking.LastModifiedBy = _currentUser.Context.OwnerId;
+        }
+        
+        if (entity is IDateTracking dateTracking)
+        {
+            dateTracking.LastModifiedDate = DateHelper.Now;
         }
     }
 

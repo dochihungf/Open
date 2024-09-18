@@ -37,7 +37,7 @@ public class ReadOnlyRepository<TEntity> : IReadOnlyRepository<TEntity> where TE
         _sequenceCaching = sequenceCaching;
         _tableName = (((TEntity)Activator.CreateInstance(typeof(TEntity))!)!).GetTableName();
         _provider = provider;
-        _isSystemTable = typeof(TEntity).GetProperty("OwnerId") == null;
+        _isSystemTable = !typeof(TEntity).HasInterface(typeof(IPersonalizeEntity));
     }
 
     #region Cache
@@ -73,17 +73,17 @@ public class ReadOnlyRepository<TEntity> : IReadOnlyRepository<TEntity> where TE
         }
 
         var cmd = $"SELECT * FROM {_tableName} as T WHERE 1=1";
-        if (typeof(TEntity).GetProperty("OwnerId") != null)
+        if (typeof(TEntity).HasInterface(typeof(IPersonalizeEntity)))
         {
             cmd += $" AND T.OwnerId = '{_currentUser.Context.OwnerId}'";
         }
         
-        if (typeof(TEntity).HasInterface(typeof(IAuditable)))
+        if (typeof(TEntity).HasInterface(typeof(ISoftDelete)))
         {
             cmd += " AND T.IsDeleted = 0";
-            cmd += " ORDER BY CASE WHEN T.LastModifiedDate > T.CreatedDate THEN T.LastModifiedDate ELSE T.CreatedDate END DESC";
         }
         
+        cmd += " ORDER BY CASE WHEN T.LastModifiedDate > T.CreatedDate THEN T.LastModifiedDate ELSE T.CreatedDate END DESC";
         
         var result = await _connection.QueryAsync<TResult>(cmd);
         if (result.Any())
@@ -103,12 +103,12 @@ public class ReadOnlyRepository<TEntity> : IReadOnlyRepository<TEntity> where TE
         }
 
         var cmd = $"SELECT * FROM {_tableName} as T WHERE T.Id = @Id";
-        if (typeof(TEntity).GetProperty("OwnerId") != null)
+        if (typeof(TEntity).HasInterface(typeof(IPersonalizeEntity)))
         {
             cmd += $" AND T.OwnerId = '{_currentUser.Context.OwnerId}'";
         }
         
-        if (typeof(TEntity).HasInterface(typeof(IAuditable)))
+        if (typeof(TEntity).HasInterface(typeof(ISoftDelete)))
         {
             cmd += " AND T.IsDeleted = 0";
         }
@@ -128,13 +128,13 @@ public class ReadOnlyRepository<TEntity> : IReadOnlyRepository<TEntity> where TE
         var cmd = $"SELECT * FROM {_tableName} as T WHERE 1 = 1";
         var countCmd = $"SELECT Count(Id) FROM {_tableName} as T WHERE 1 = 1";
 
-        if (typeof(TEntity).GetProperty("OwnerId") != null)
+        if (typeof(TEntity).HasInterface(typeof(IPersonalizeEntity)))
         {
             cmd += $" AND T.OwnerId = '{_currentUser.Context.OwnerId}'";
             countCmd += $" AND T.OwnerId = '{_currentUser.Context.OwnerId}'";
         }
         
-        if (typeof(TEntity).HasInterface(typeof(IAuditable)))
+        if (typeof(TEntity).HasInterface(typeof(ISoftDelete)))
         {
             cmd += " AND T.IsDeleted = 0";
             countCmd += " AND T.IsDeleted = 0";
@@ -186,11 +186,7 @@ public class ReadOnlyRepository<TEntity> : IReadOnlyRepository<TEntity> where TE
         }
         else
         {
-            if (typeof(TEntity).HasInterface(typeof(IAuditable)))
-            {
-                cmd += $" ORDER BY CASE WHEN T.LastModifiedDate > T.CreatedDate THEN T.LastModifiedDate ELSE T.CreatedDate END DESC ";
-            }
-            cmd += $" {limit}";
+            cmd += $" ORDER BY CASE WHEN T.LastModifiedDate > T.CreatedDate THEN T.LastModifiedDate ELSE T.CreatedDate END DESC {limit}";
         }
 
         var dataTask = _connection.QueryAsync<TResult>(cmd, param);
@@ -208,9 +204,12 @@ public class ReadOnlyRepository<TEntity> : IReadOnlyRepository<TEntity> where TE
     public virtual async Task<long> GetCountAsync(CancellationToken cancellationToken)
     {
         var cmd = $"SELECT COUNT(*) FROM {_tableName} as T WHERE 1=1";
-        if (typeof(TEntity).GetProperty("OwnerId") != null) cmd += $" AND T.OwnerId = '{_currentUser.Context.OwnerId}'";
+        if (typeof(TEntity).HasInterface(typeof(IPersonalizeEntity)))
+        {
+            cmd += $" AND T.OwnerId = '{_currentUser.Context.OwnerId}'";
+        }
 
-        if (typeof(TEntity).HasInterface(typeof(IAuditable)))
+        if (typeof(TEntity).HasInterface(typeof(ISoftDelete)))
         {
             cmd += " AND T.IsDeleted = 0";
         }
