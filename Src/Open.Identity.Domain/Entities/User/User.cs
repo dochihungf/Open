@@ -4,7 +4,7 @@ using Open.Security.Enums;
 
 namespace Open.Identity.Domain.Entities;
 
-public class User : EntityBase
+public class User : EntityAuditable
 {
     public string Username { get; set; }
     
@@ -30,11 +30,6 @@ public class User : EntityBase
     
     public AuthenticatorType AuthenticatorType { get; set; }
     
-    public DateTime? DeletedDate { get; set; }
-    
-    public Guid? DeletedBy { get; set; }
-    public bool IsDeleted { get; set; }
-
     #region Navigations
     public virtual SecretKey SecretKey { get; set; }
     public virtual MFA MFA { get; set; }

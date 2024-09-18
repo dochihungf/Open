@@ -1,6 +1,6 @@
 namespace Open.Identity.Domain.Entities;
 
-public class SecretKey : EntityBase, IPersonalizeEntity
+public class SecretKey : EntityAuditable, IPersonalizeEntity
 {
     public string Key { get; set; }
     

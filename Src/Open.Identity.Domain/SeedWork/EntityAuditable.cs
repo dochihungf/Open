@@ -2,7 +2,7 @@ using Open.Core.SeedWork.Interfaces;
 
 namespace Open.Identity.Domain.SeedWork;
 
-public class EntityBase : Entity, IUserTracking, ISoftDelete
+public class EntityAuditable : Entity, IUserTracking, ISoftDelete
 {
     public Guid CreatedBy { get; set; }
     public Guid? LastModifiedBy { get; set; }

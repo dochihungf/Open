@@ -1,6 +1,6 @@
 namespace Open.Identity.Domain.Entities;
 
-public class RefreshToken : EntityBase, IPersonalizeEntity
+public class RefreshToken : EntityAuditable, IPersonalizeEntity
 {
     public string Token { get; set; }
     public string RefreshTokenValue { get; set; }

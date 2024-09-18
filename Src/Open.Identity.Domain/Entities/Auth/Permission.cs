@@ -1,6 +1,6 @@
 namespace Open.Identity.Domain.Entities;
 
-public class Permission : EntityBase
+public class Permission : EntityAuditable
 {
     public string Code { get; set; }
 

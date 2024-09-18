@@ -1,6 +1,6 @@
 namespace Open.Identity.Domain.Entities;
 
-public class MFA : EntityBase, IPersonalizeEntity
+public class MFA : EntityAuditable, IPersonalizeEntity
 {
     public MFAType Type { get; set; } = MFAType.None;
 

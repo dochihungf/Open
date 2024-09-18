@@ -1,6 +1,6 @@
 namespace Open.Identity.Domain.Entities;
 
-public class Role : EntityBase
+public class Role : EntityAuditable
 {
     public string Code { get; set; }
 

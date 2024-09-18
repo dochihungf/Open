@@ -13,7 +13,7 @@ public static class ModelBuilderExtensions
         return string.IsNullOrWhiteSpace(configuration.Schema) ? entityTypeBuilder.ToTable(configuration.Name) : entityTypeBuilder.ToTable(configuration.Name, configuration.Schema);
     }
     
-    private static EntityTypeBuilder<TEntity> ApplyEntityAuditConfiguration<TEntity>(this EntityTypeBuilder<TEntity> builder) where TEntity : EntityBase
+    private static EntityTypeBuilder<TEntity> ApplyEntityAuditableConfiguration<TEntity>(this EntityTypeBuilder<TEntity> builder) where TEntity : EntityAuditable
     {
         builder.Property(e => e.CreatedBy).HasMaxLength(DataSchemaLength.ExtraLarge);
         builder.Property(e => e.LastModifiedBy).HasMaxLength(DataSchemaLength.ExtraLarge).IsRequired(false);
@@ -51,7 +51,7 @@ public static class ModelBuilderExtensions
             user.Property(u => u.FirstName).HasMaxLength(DataSchemaLength.Medium);
             user.Property(u => u.LastName).HasMaxLength(DataSchemaLength.Medium);
             user.Property(cd => cd.Gender).HasConversion(v => v.ToString(), v => (GenderType)Enum.Parse(typeof(GenderType), v));
-            user.ApplyEntityAuditConfiguration();
+            user.ApplyEntityAuditableConfiguration();
             
             // Non - Index Clustered   
             user.HasIndex(u => u.Id);
@@ -74,7 +74,7 @@ public static class ModelBuilderExtensions
             role.HasKey(e => e.Id);
             role.Property(r => r.Code).HasMaxLength(DataSchemaLength.Medium);
             role.Property(r => r.Name).HasMaxLength(DataSchemaLength.Large);
-            role.ApplyEntityAuditConfiguration();
+            role.ApplyEntityAuditableConfiguration();
             
             role.HasIndex(r => r.Code);
         });
@@ -85,7 +85,7 @@ public static class ModelBuilderExtensions
             userRole.ToTable(storeOptions.UserRole);
             
             userRole.HasKey(ur => new { ur.UserId, ur.RoleId });
-            userRole.ApplyEntityAuditConfiguration();
+            userRole.ApplyEntityAuditableConfiguration();
             
             userRole.HasOne(ur => ur.User).WithMany(u => u.UserRoles).HasForeignKey(ur => ur.UserId).IsRequired().OnDelete(DeleteBehavior.Cascade);
             userRole.HasOne(ur => ur.Role).WithMany(r => r.UserRoles).HasForeignKey(ur => ur.RoleId).IsRequired().OnDelete(DeleteBehavior.Cascade);
@@ -100,7 +100,7 @@ public static class ModelBuilderExtensions
             permission.Property(a => a.Code).HasMaxLength(DataSchemaLength.Medium).IsUnicode(false);
             permission.Property(a => a.Name).HasMaxLength(DataSchemaLength.Large);
             permission.Property(a => a.Description).HasMaxLength(DataSchemaLength.ExtraLarge);
-            permission.ApplyEntityAuditConfiguration();
+            permission.ApplyEntityAuditableConfiguration();
             
             permission.HasIndex(r => r.Code);
             
@@ -112,7 +112,7 @@ public static class ModelBuilderExtensions
             rolePermission.ToTable(storeOptions.RolePermission);
             
             rolePermission.HasKey(ur => new { ur.PermissionId, ur.RoleId });
-            rolePermission.ApplyEntityAuditConfiguration();
+            rolePermission.ApplyEntityAuditableConfiguration();
             
             rolePermission.HasOne(ur => ur.Role).WithMany(u => u.RolePermissions).HasForeignKey(ur => ur.RoleId).IsRequired().OnDelete(DeleteBehavior.Cascade);
             rolePermission.HasOne(ur => ur.Permission).WithMany(r => r.RolePermissions).HasForeignKey(ur => ur.PermissionId).IsRequired().OnDelete(DeleteBehavior.Cascade);
@@ -126,7 +126,7 @@ public static class ModelBuilderExtensions
             userPermission.ToTable(storeOptions.UserPermission);
             
             userPermission.HasKey(ur => new { ur.UserId, ur.PermissionId });
-            userPermission.ApplyEntityAuditConfiguration();
+            userPermission.ApplyEntityAuditableConfiguration();
             
             userPermission.HasOne(up => up.User).WithMany(u => u.UserPermissions).HasForeignKey(up => up.UserId).IsRequired().OnDelete(DeleteBehavior.Cascade);
             userPermission.HasOne(up => up.Permission).WithMany(u => u.UserPermissions).HasForeignKey(up => up.PermissionId).IsRequired().OnDelete(DeleteBehavior.Cascade);
@@ -170,7 +170,7 @@ public static class ModelBuilderExtensions
             OTP.HasKey(e => e.Id);
             OTP.Property(e => e.Code).HasMaxLength(DataSchemaLength.Medium).IsUnicode(false);
             OTP.Property(e => e.Type).HasConversion(v => v.ToString(), v => (OTPType)Enum.Parse(typeof(OTPType), v));
-            OTP.ApplyEntityAuditConfiguration();
+            OTP.ApplyEntityAuditableConfiguration();
             
             OTP.HasIndex(e => e.OwnerId);
             OTP.HasIndex(e => e.Code);
@@ -185,7 +185,7 @@ public static class ModelBuilderExtensions
             
             MFA.HasKey(e => e.Id);
             MFA.Property(e => e.Type).HasConversion(v => v.ToString(), v => (MFAType)Enum.Parse(typeof(MFAType), v));
-            MFA.ApplyEntityAuditConfiguration();
+            MFA.ApplyEntityAuditableConfiguration();
 
             MFA.HasIndex(e => e.OwnerId);
         });

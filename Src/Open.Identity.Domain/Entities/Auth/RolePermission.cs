@@ -1,6 +1,6 @@
 namespace Open.Identity.Domain.Entities;
 
-public class RolePermission : EntityBase
+public class RolePermission : EntityAuditable
 {
     #region Relationships
 

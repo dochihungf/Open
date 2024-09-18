@@ -1,6 +1,6 @@
 namespace Open.Identity.Domain.Entities;
 
-public class OTP : EntityBase, IPersonalizeEntity
+public class OTP : EntityAuditable, IPersonalizeEntity
 {
     public string Code { get; set; }
 
