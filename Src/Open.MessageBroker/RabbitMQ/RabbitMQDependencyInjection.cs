@@ -1,12 +1,3 @@
-using System.Net.Sockets;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using Open.MessageBroker.Abstractions;
-using Polly;
-using Polly.Retry;
-using RabbitMQ.Client;
-using RabbitMQ.Client.Exceptions;
-
 namespace Open.MessageBroker.RabbitMQ;
 
 public static class RabbitMqDependencyInjection
