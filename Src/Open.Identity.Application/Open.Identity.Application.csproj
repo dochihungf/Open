@@ -7,9 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Commands\User\DeleteMultiple\" />
-      <Folder Include="Commands\User\Delete\" />
-      <Folder Include="Commands\User\Update\" />
+      <Folder Include="Commands\Auth\" />
       <Folder Include="DomainEventHandlers\" />
       <Folder Include="IntegrationEvents\" />
       <Folder Include="Interfaces\Services\Impls\" />

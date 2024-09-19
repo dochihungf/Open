@@ -3,7 +3,7 @@ using Open.Core.SeedWork.Interfaces;
 
 namespace Open.User.Domain.SeedWork;
 
-public class EntityBase : Entity, IUserTracking, ISoftDelete
+public class EntityBase : DomainEntity, IUserTracking, ISoftDelete
 {
     public Guid CreatedBy { get; set; }
     public Guid? LastModifiedBy { get; set; }

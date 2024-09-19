@@ -18,7 +18,16 @@
     <ItemGroup>
       <Folder Include="Domain\UserAggregate\Events\" />
       <Folder Include="Domain\UserAggregate\Specifications\" />
-      <Folder Include="Features\Users\" />
+      <Folder Include="Features\Users\Commands\DeleteMulti\" />
+      <Folder Include="Features\Users\Commands\Delete\" />
+      <Folder Include="Features\Users\Commands\SetOrUpdateConfig\" />
+      <Folder Include="Features\Users\Commands\Update\" />
+      <Folder Include="Features\Users\Commands\UploadAvatar\" />
+      <Folder Include="Features\Users\Queries\Avatar\" />
+      <Folder Include="Features\Users\Queries\ById\" />
+      <Folder Include="Features\Users\Queries\Config\" />
+      <Folder Include="Features\Users\Queries\Paged\" />
+      <Folder Include="Features\Users\Queries\Profile\" />
       <Folder Include="Grpc\" />
       <Folder Include="Infrastructure\Redis\" />
       <Folder Include="IntegrationEvents\" />

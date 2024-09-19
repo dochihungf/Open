@@ -1,4 +1,5 @@
 @Open.User_HostAddress = http://localhost:5033
+@Open = variable value
 
 GET {{Open.User_HostAddress}}/weatherforecast/
 Accept: application/json
