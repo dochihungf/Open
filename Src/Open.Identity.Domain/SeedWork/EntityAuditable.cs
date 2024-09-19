@@ -9,4 +9,9 @@ public class EntityAuditable : Entity, IUserTracking, ISoftDelete
     public DateTime? DeletedDate { get; set; }
     public Guid? DeletedBy { get; set; }
     public bool IsDeleted { get; set; }
+    
+    public virtual void Delete()
+    {
+        this.IsDeleted = true;
+    }
 }

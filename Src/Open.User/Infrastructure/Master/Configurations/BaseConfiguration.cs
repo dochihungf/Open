@@ -15,5 +15,14 @@ internal abstract class BaseConfiguration<TEntity> : IEntityTypeConfiguration<TE
         builder.Property(e => e.Id)
             .HasDefaultValueSql(UniqueType.Algorithm)
             .ValueGeneratedOnAdd();
+
+        builder.Property(e => e.CreatedDate)
+            .HasDefaultValue(DateTime.UtcNow);
+
+        builder.Property(e => e.LastModifiedDate)
+            .HasDefaultValue(DateTime.UtcNow);
+
+        builder.Property(e => e.Version)
+            .IsConcurrencyToken();
     }
 }

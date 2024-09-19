@@ -10,4 +10,9 @@ public class EntityBase : DomainEntity, IUserTracking, ISoftDelete
     public DateTime? DeletedDate { get; set; }
     public Guid? DeletedBy { get; set; }
     public bool IsDeleted { get; set; }
+    
+    public void Delete()
+    {
+        this.IsDeleted = true;
+    }
 }

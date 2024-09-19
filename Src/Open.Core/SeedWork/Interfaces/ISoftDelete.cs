@@ -7,4 +7,6 @@ public interface ISoftDelete
     Guid? DeletedBy { get; set; }
     
     bool IsDeleted { get; set; }
+    
+    void Delete();
 }
