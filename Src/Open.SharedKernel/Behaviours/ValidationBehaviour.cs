@@ -1,7 +1,3 @@
-using FluentValidation;
-using MediatR;
-using ValidationException = Open.Core.Exceptions.ValidationException;
-
 namespace Open.SharedKernel.Behaviours;
 
 public class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>

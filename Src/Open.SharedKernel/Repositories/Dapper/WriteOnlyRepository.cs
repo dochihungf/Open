@@ -1,24 +1,4 @@
-﻿using System.Reflection;
-using MassTransit.Internals;
-using Microsoft.Extensions.Localization;
-using MySqlConnector;
-using Open.Constants;
-using Open.Core.Exceptions;
-using Open.Core.GuardClauses;
-using Open.Core.Repositories.Dapper;
-using Open.Core.SeedWork;
-using Open.Core.SeedWork.Interfaces;
-using Open.Core.UnitOfWork;
-using Open.Security.Auth;
-using Open.SharedKernel.Attributes;
-using Open.SharedKernel.Caching.Sequence;
-using Open.SharedKernel.Extensions;
-using Open.SharedKernel.Libraries.Helpers;
-using Open.SharedKernel.Libraries.Security;
-using Open.SharedKernel.MySQL;
-using Open.SharedKernel.Properties;
-
-namespace Open.SharedKernel.Repositories.Dapper;
+﻿namespace Open.SharedKernel.Repositories.Dapper;
 
 public class WriteOnlyRepository<TEntity> : IWriteOnlyRepository<TEntity> where TEntity : IEntity
 {
@@ -73,7 +53,6 @@ public class WriteOnlyRepository<TEntity> : IWriteOnlyRepository<TEntity> where 
             nameof(ISoftDelete.IsDeleted),
             nameof(ISoftDelete.DeletedBy),
             nameof(ISoftDelete.DeletedDate),
-
         };
         
         var properties = entity.GetPropertyInfos();

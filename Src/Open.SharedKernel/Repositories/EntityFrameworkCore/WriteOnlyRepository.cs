@@ -5,6 +5,6 @@ using Open.Core.SeedWork;
 
 namespace Open.SharedKernel.Repositories.EntityFrameworkCore;
 
-public class WriteRepository<T, TContext>(TContext dbContext) : RepositoryBase<T>(dbContext), IWriteRepository<T>
+public class WriteOnlyRepository<T, TContext>(TContext dbContext) : RepositoryBase<T>(dbContext), IWriteRepository<T>
     where T : Entity
     where TContext : DbContext;

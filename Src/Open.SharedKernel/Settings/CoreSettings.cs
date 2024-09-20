@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-
-namespace Open.SharedKernel.Settings;
+﻿namespace Open.SharedKernel.Settings;
 
 public static class CoreSettings
 {

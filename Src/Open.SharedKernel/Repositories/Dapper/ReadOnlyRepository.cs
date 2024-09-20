@@ -1,22 +1,4 @@
-﻿using MassTransit.Internals;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Localization;
-using Open.Constants;
-using Open.Core.Exceptions;
-using Open.Core.Models;
-using Open.Core.Repositories.Dapper;
-using Open.Core.Results;
-using Open.Core.SeedWork.Interfaces;
-using Open.Security.Auth;
-using Open.SharedKernel.Attributes;
-using Open.SharedKernel.Caching.Sequence;
-using Open.SharedKernel.Extensions;
-using Open.SharedKernel.Libraries.Security;
-using Open.SharedKernel.Libraries.Utilities;
-using Open.SharedKernel.MySQL;
-using Open.SharedKernel.Properties;
-
-namespace Open.SharedKernel.Repositories.Dapper;
+﻿namespace Open.SharedKernel.Repositories.Dapper;
 
 public class ReadOnlyRepository<TEntity> : IReadOnlyRepository<TEntity> where TEntity : IEntity
 {

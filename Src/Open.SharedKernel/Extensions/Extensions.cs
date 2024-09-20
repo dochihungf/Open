@@ -1,6 +1,3 @@
-using System.Reflection;
-using AutoMapper.Configuration.Annotations;
-
 namespace Open.SharedKernel.Extensions;
 
 static partial class Extensions

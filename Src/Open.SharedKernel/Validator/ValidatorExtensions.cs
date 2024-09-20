@@ -1,8 +1,4 @@
-﻿using FluentValidation;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
-
-namespace Open.SharedKernel.Validator;
+﻿namespace Open.SharedKernel.Validator;
 
 public static class Extensions
 {
