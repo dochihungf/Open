@@ -76,7 +76,7 @@ public static class DependencyInjection
         return services;
     }
     
-    public static OptionsBuilder<MySqlRetryOptions> ConfigureMySqlRetryOptions(this IServiceCollection services, IConfiguration configuration)
+    private static OptionsBuilder<MySqlRetryOptions> ConfigureMySqlRetryOptions(this IServiceCollection services, IConfiguration configuration)
     {
         var section = configuration.GetRequiredSection(nameof(MySqlRetryOptions));
         return services.AddOptions<MySqlRetryOptions>()

@@ -8,11 +8,16 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.7"/>
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Open.Core\Open.Core.csproj" />
+      <ProjectReference Include="..\Open.ServiceDefaults\Open.ServiceDefaults.csproj" />
+      <ProjectReference Include="..\Open.SharedKernel\Open.SharedKernel.csproj" />
     </ItemGroup>
 
     <ItemGroup>

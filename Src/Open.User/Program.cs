@@ -1,9 +1,19 @@
+using Open.ServiceDefaults;
+using Open.SharedKernel.Settings;
+using Open.User.Infrastructure.Master;
+
 var builder = WebApplication.CreateBuilder(args);
+
+CoreSettings.SetConnectionStrings(builder.Configuration);
+
+builder.AddServiceDefaults();
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 
