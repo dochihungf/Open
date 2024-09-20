@@ -216,6 +216,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Ardalis.Specification": {
+              "target": "Package",
+              "version": "[8.0.0, )",
+              "versionCentrallyManaged": true
+            },
             "FluentValidation": {
               "target": "Package",
               "version": "[11.9.2, )",

@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "2BKpHDQ+xLA=",
+  "dgSpecHash": "80ri7wA3HuM=",
   "success": true,
   "projectFilePath": "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.User\\Open.User.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Administrator\\.nuget\\packages\\ardalis.specification\\8.0.0\\ardalis.specification.8.0.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\fluentvalidation\\11.9.2\\fluentvalidation.11.9.2.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\idgen\\3.0.3\\idgen.3.0.3.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\masstransit\\8.2.4\\masstransit.8.2.4.nupkg.sha512",
