@@ -15,9 +15,10 @@ public static class PagedListExtensions
         {
             throw new ArgumentException($"indexFrom: {from} > pageIndex: {index}, must indexFrom <= pageIndex");
         }
-        
-        var totalCount = source.Count();
-        var items = source.Skip((index - from) * size).Take(size).ToList();
+
+        var enumerable = source.ToList();
+        var totalCount = enumerable.Count();
+        var items = enumerable.Skip((index - from) * size).Take(size).ToList();
         var totalPages = (int)Math.Ceiling(totalCount / (double)size);
 
         return new PagedList<TEntity>(index, size, from, totalCount, totalPages, items);
