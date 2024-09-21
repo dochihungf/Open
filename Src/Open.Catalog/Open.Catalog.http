@@ -1,0 +1,6 @@
+@Open.Catalog_HostAddress = http://localhost:5108
+
+GET {{Open.Catalog_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

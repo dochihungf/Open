@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.User\\Open.User.csproj": {}
+    "C:\\Users\\Administrator\\Open\\Src\\Open.User\\Open.User.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.Constants\\Open.Constants.csproj": {
+    "C:\\Users\\Administrator\\Open\\Src\\Open.Constants\\Open.Constants.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.Constants\\Open.Constants.csproj",
+        "projectUniqueName": "C:\\Users\\Administrator\\Open\\Src\\Open.Constants\\Open.Constants.csproj",
         "projectName": "Open.Constants",
-        "projectPath": "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.Constants\\Open.Constants.csproj",
+        "projectPath": "C:\\Users\\Administrator\\Open\\Src\\Open.Constants\\Open.Constants.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.Constants\\obj\\",
+        "outputPath": "C:\\Users\\Administrator\\Open\\Src\\Open.Constants\\obj\\",
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "CentralPackageTransitivePinningEnabled": true,
@@ -168,14 +168,14 @@
         }
       }
     },
-    "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.Core\\Open.Core.csproj": {
+    "C:\\Users\\Administrator\\Open\\Src\\Open.Core\\Open.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.Core\\Open.Core.csproj",
+        "projectUniqueName": "C:\\Users\\Administrator\\Open\\Src\\Open.Core\\Open.Core.csproj",
         "projectName": "Open.Core",
-        "projectPath": "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.Core\\Open.Core.csproj",
+        "projectPath": "C:\\Users\\Administrator\\Open\\Src\\Open.Core\\Open.Core.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.Core\\obj\\",
+        "outputPath": "C:\\Users\\Administrator\\Open\\Src\\Open.Core\\obj\\",
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "CentralPackageTransitivePinningEnabled": true,
@@ -192,11 +192,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.Constants\\Open.Constants.csproj": {
-                "projectPath": "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.Constants\\Open.Constants.csproj"
+              "C:\\Users\\Administrator\\Open\\Src\\Open.Constants\\Open.Constants.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Open\\Src\\Open.Constants\\Open.Constants.csproj"
               },
-              "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.Security\\Open.Security.csproj": {
-                "projectPath": "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.Security\\Open.Security.csproj"
+              "C:\\Users\\Administrator\\Open\\Src\\Open.Security\\Open.Security.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Open\\Src\\Open.Security\\Open.Security.csproj"
               }
             }
           }
@@ -372,14 +372,14 @@
         }
       }
     },
-    "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.Security\\Open.Security.csproj": {
+    "C:\\Users\\Administrator\\Open\\Src\\Open.Security\\Open.Security.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.Security\\Open.Security.csproj",
+        "projectUniqueName": "C:\\Users\\Administrator\\Open\\Src\\Open.Security\\Open.Security.csproj",
         "projectName": "Open.Security",
-        "projectPath": "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.Security\\Open.Security.csproj",
+        "projectPath": "C:\\Users\\Administrator\\Open\\Src\\Open.Security\\Open.Security.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.Security\\obj\\",
+        "outputPath": "C:\\Users\\Administrator\\Open\\Src\\Open.Security\\obj\\",
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "CentralPackageTransitivePinningEnabled": true,
@@ -556,14 +556,14 @@
         }
       }
     },
-    "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.ServiceDefaults\\Open.ServiceDefaults.csproj": {
+    "C:\\Users\\Administrator\\Open\\Src\\Open.ServiceDefaults\\Open.ServiceDefaults.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.ServiceDefaults\\Open.ServiceDefaults.csproj",
+        "projectUniqueName": "C:\\Users\\Administrator\\Open\\Src\\Open.ServiceDefaults\\Open.ServiceDefaults.csproj",
         "projectName": "Open.ServiceDefaults",
-        "projectPath": "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.ServiceDefaults\\Open.ServiceDefaults.csproj",
+        "projectPath": "C:\\Users\\Administrator\\Open\\Src\\Open.ServiceDefaults\\Open.ServiceDefaults.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.ServiceDefaults\\obj\\",
+        "outputPath": "C:\\Users\\Administrator\\Open\\Src\\Open.ServiceDefaults\\obj\\",
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "CentralPackageTransitivePinningEnabled": true,
@@ -580,11 +580,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.Core\\Open.Core.csproj": {
-                "projectPath": "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.Core\\Open.Core.csproj"
+              "C:\\Users\\Administrator\\Open\\Src\\Open.Core\\Open.Core.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Open\\Src\\Open.Core\\Open.Core.csproj"
               },
-              "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.SharedKernel\\Open.SharedKernel.csproj": {
-                "projectPath": "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.SharedKernel\\Open.SharedKernel.csproj"
+              "C:\\Users\\Administrator\\Open\\Src\\Open.SharedKernel\\Open.SharedKernel.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Open\\Src\\Open.SharedKernel\\Open.SharedKernel.csproj"
               }
             }
           }
@@ -802,14 +802,14 @@
         }
       }
     },
-    "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.SharedKernel\\Open.SharedKernel.csproj": {
+    "C:\\Users\\Administrator\\Open\\Src\\Open.SharedKernel\\Open.SharedKernel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.SharedKernel\\Open.SharedKernel.csproj",
+        "projectUniqueName": "C:\\Users\\Administrator\\Open\\Src\\Open.SharedKernel\\Open.SharedKernel.csproj",
         "projectName": "Open.SharedKernel",
-        "projectPath": "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.SharedKernel\\Open.SharedKernel.csproj",
+        "projectPath": "C:\\Users\\Administrator\\Open\\Src\\Open.SharedKernel\\Open.SharedKernel.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.SharedKernel\\obj\\",
+        "outputPath": "C:\\Users\\Administrator\\Open\\Src\\Open.SharedKernel\\obj\\",
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "CentralPackageTransitivePinningEnabled": true,
@@ -826,11 +826,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.Core\\Open.Core.csproj": {
-                "projectPath": "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.Core\\Open.Core.csproj"
+              "C:\\Users\\Administrator\\Open\\Src\\Open.Core\\Open.Core.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Open\\Src\\Open.Core\\Open.Core.csproj"
               },
-              "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.Security\\Open.Security.csproj": {
-                "projectPath": "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.Security\\Open.Security.csproj"
+              "C:\\Users\\Administrator\\Open\\Src\\Open.Security\\Open.Security.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Open\\Src\\Open.Security\\Open.Security.csproj"
               }
             }
           }
@@ -1075,14 +1075,14 @@
         }
       }
     },
-    "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.User\\Open.User.csproj": {
+    "C:\\Users\\Administrator\\Open\\Src\\Open.User\\Open.User.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.User\\Open.User.csproj",
+        "projectUniqueName": "C:\\Users\\Administrator\\Open\\Src\\Open.User\\Open.User.csproj",
         "projectName": "Open.User",
-        "projectPath": "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.User\\Open.User.csproj",
+        "projectPath": "C:\\Users\\Administrator\\Open\\Src\\Open.User\\Open.User.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.User\\obj\\",
+        "outputPath": "C:\\Users\\Administrator\\Open\\Src\\Open.User\\obj\\",
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "CentralPackageTransitivePinningEnabled": true,
@@ -1099,14 +1099,14 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.Core\\Open.Core.csproj": {
-                "projectPath": "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.Core\\Open.Core.csproj"
+              "C:\\Users\\Administrator\\Open\\Src\\Open.Core\\Open.Core.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Open\\Src\\Open.Core\\Open.Core.csproj"
               },
-              "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.ServiceDefaults\\Open.ServiceDefaults.csproj": {
-                "projectPath": "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.ServiceDefaults\\Open.ServiceDefaults.csproj"
+              "C:\\Users\\Administrator\\Open\\Src\\Open.ServiceDefaults\\Open.ServiceDefaults.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Open\\Src\\Open.ServiceDefaults\\Open.ServiceDefaults.csproj"
               },
-              "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.SharedKernel\\Open.SharedKernel.csproj": {
-                "projectPath": "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.SharedKernel\\Open.SharedKernel.csproj"
+              "C:\\Users\\Administrator\\Open\\Src\\Open.SharedKernel\\Open.SharedKernel.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Open\\Src\\Open.SharedKernel\\Open.SharedKernel.csproj"
               }
             }
           }
