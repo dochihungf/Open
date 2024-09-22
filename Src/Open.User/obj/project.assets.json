@@ -13347,11 +13347,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Administrator\\Open\\Src\\Open.User\\Open.User.csproj",
+      "projectUniqueName": "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.User\\Open.User.csproj",
       "projectName": "Open.User",
-      "projectPath": "C:\\Users\\Administrator\\Open\\Src\\Open.User\\Open.User.csproj",
+      "projectPath": "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.User\\Open.User.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Administrator\\Open\\Src\\Open.User\\obj\\",
+      "outputPath": "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.User\\obj\\",
       "projectStyle": "PackageReference",
       "centralPackageVersionsManagementEnabled": true,
       "CentralPackageTransitivePinningEnabled": true,
@@ -13368,14 +13368,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Administrator\\Open\\Src\\Open.Core\\Open.Core.csproj": {
-              "projectPath": "C:\\Users\\Administrator\\Open\\Src\\Open.Core\\Open.Core.csproj"
+            "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.Core\\Open.Core.csproj": {
+              "projectPath": "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.Core\\Open.Core.csproj"
             },
-            "C:\\Users\\Administrator\\Open\\Src\\Open.ServiceDefaults\\Open.ServiceDefaults.csproj": {
-              "projectPath": "C:\\Users\\Administrator\\Open\\Src\\Open.ServiceDefaults\\Open.ServiceDefaults.csproj"
+            "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.ServiceDefaults\\Open.ServiceDefaults.csproj": {
+              "projectPath": "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.ServiceDefaults\\Open.ServiceDefaults.csproj"
             },
-            "C:\\Users\\Administrator\\Open\\Src\\Open.SharedKernel\\Open.SharedKernel.csproj": {
-              "projectPath": "C:\\Users\\Administrator\\Open\\Src\\Open.SharedKernel\\Open.SharedKernel.csproj"
+            "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.SharedKernel\\Open.SharedKernel.csproj": {
+              "projectPath": "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.SharedKernel\\Open.SharedKernel.csproj"
             }
           }
         }

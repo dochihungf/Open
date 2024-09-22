@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fl5pnfDYUD4=",
+  "dgSpecHash": "7LEuvFA9icU=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Administrator\\Open\\Src\\Open.User\\Open.User.csproj",
+  "projectFilePath": "C:\\Users\\Administrator\\RiderProjects\\Open\\Src\\Open.User\\Open.User.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrator\\.nuget\\packages\\ardalis.specification\\8.0.0\\ardalis.specification.8.0.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\ardalis.specification.entityframeworkcore\\8.0.0\\ardalis.specification.entityframeworkcore.8.0.0.nupkg.sha512",
