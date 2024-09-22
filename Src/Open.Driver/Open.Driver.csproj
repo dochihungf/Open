@@ -12,6 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Domain\Aggregates\" />
       <Folder Include="Endpoints\" />
       <Folder Include="Extensions\" />
       <Folder Include="Features\" />
