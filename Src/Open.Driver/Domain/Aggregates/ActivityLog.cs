@@ -1,8 +1,9 @@
-﻿using Open.Driver.Domain.Enums;
+﻿using Open.Core.SeedWork.Interfaces;
+using Open.Driver.Domain.Enums;
 
 namespace Open.Driver.Domain.Aggregates;
 
-public class ActivityLog
+public class ActivityLog : IAggregateRoot
 {
     public Guid Id { get; set; }
     public Guid UserId { get; set; }

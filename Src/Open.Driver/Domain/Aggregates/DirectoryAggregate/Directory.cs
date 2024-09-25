@@ -1,8 +1,9 @@
-﻿using Open.Driver.Domain.SeedWork;
+﻿using Open.Core.SeedWork.Interfaces;
+using Open.Driver.Domain.SeedWork;
 
 namespace Open.Driver.Domain.Aggregates;
 
-public class Directory : EntityBase
+public class Directory : EntityBase, IAggregateRoot
 {
     public string Name { get; set; }
 

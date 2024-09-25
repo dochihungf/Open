@@ -1,9 +1,10 @@
-﻿using Open.Driver.Domain.SeedWork;
+﻿using Open.Core.SeedWork.Interfaces;
+using Open.Driver.Domain.SeedWork;
 using Open.Driver.Domain.ValueObject;
 
 namespace Open.Driver.Domain.Aggregates;
 
-public class File : EntityBase
+public class File : EntityBase, IAggregateRoot
 {
     public string FileName { get; set; }
 
