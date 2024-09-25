@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="AWSSDK.S3" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.8"/>
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
     </ItemGroup>
@@ -18,7 +19,6 @@
       <Folder Include="Filters\" />
       <Folder Include="Grpc\" />
       <Folder Include="Infrastructure\Master\EntityConfigurations\" />
-      <Folder Include="Infrastructure\S3ObjectStorage\Models\" />
       <Folder Include="IntegrationEvents\" />
       <Folder Include="Protos\" />
       <Folder Include="Subscribers\" />
