@@ -1,6 +1,9 @@
-﻿namespace Open.Driver.Domain.Aggregates;
+﻿using Open.Driver.Domain.SeedWork;
 
-public class Config
+namespace Open.Driver.Domain.Aggregates;
+
+public class Config : EntityBase
 {
-    
+    public long MaxCapacity { get; set; }
+    public long MaxFileSize { get; set; }
 }

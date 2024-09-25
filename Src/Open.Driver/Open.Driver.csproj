@@ -12,7 +12,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Domain\Aggregates\" />
       <Folder Include="Endpoints\" />
       <Folder Include="Extensions\" />
       <Folder Include="Features\" />
@@ -38,6 +37,10 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>Resources.resx</DependentUpon>
       </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Open.Core\Open.Core.csproj" />
     </ItemGroup>
 
 </Project>
