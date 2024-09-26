@@ -1,6 +1,11 @@
-﻿namespace Open.Driver.Infrastructure.Master;
+﻿using Microsoft.EntityFrameworkCore;
+using Open.Core.EntityFrameworkCore;
 
-public class ApplicationDbContext
+namespace Open.Driver.Infrastructure.Master;
+
+public class ApplicationDbContext : AppDbContext
 {
-    
+    public ApplicationDbContext(DbContextOptions options) : base(options)
+    {
+    }
 }
