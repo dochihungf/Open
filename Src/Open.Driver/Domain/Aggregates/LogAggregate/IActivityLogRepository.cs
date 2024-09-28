@@ -1,6 +1,3 @@
 ﻿namespace Open.Driver.Domain.Aggregates;
 
-public class ActionType
-{
-    
-}
+public record IActivityLogRepository();

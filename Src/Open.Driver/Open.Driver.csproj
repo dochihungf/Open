@@ -17,7 +17,7 @@
       <Folder Include="Apis\" />
       <Folder Include="Applications\Behaviours\" />
       <Folder Include="Applications\Features\" />
-      <Folder Include="IntegrationEvents\" />
+      <Folder Include="Consumers\" />
     </ItemGroup>
 
     <ItemGroup>

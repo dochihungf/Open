@@ -4,9 +4,9 @@ using Open.Driver.Domain.Aggregates;
 
 namespace Open.Driver.Infrastructure.Master.EntityConfigurations;
 
-public class ConfigConfiguration : EntityBaseConfiguration<Config>
+public class ConfigConfiguration : EntityBaseConfiguration<Configuration>
 {
-    public override void Configure(EntityTypeBuilder<Config> builder)
+    public override void Configure(EntityTypeBuilder<Configuration> builder)
     {
         base.Configure(builder);
         

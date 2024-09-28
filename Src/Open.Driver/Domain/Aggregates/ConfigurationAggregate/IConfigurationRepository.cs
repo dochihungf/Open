@@ -1,6 +1,6 @@
 ﻿namespace Open.Driver.Domain.Aggregates;
 
-public class IConfigRepository
+public class IConfigurationRepository
 {
     
 }

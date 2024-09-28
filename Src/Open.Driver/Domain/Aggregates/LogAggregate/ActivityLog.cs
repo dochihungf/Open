@@ -1,5 +1,4 @@
 ﻿using Open.Core.SeedWork.Interfaces;
-using Open.Driver.Domain.Enums;
 
 namespace Open.Driver.Domain.Aggregates;
 
@@ -13,6 +12,9 @@ public class ActivityLog : IAggregateRoot
     public string OldValue { get; set; }
     public string NewValue { get; set; }
     public Guid? SourceId { get; set; } 
+    public string SourceName { get; set; }
     public Guid? DestinationId { get; set; } 
+    public string DestinationName { get; set; }
+    public string Description { get; set; }
     public DateTime Timestamp { get; set; }
 }
